@@ -35,7 +35,7 @@ k# 👋 Привет, я [Ваше_Имя]!
 ## 🐍 Активность на GitHub
 
 <div align="center">
-  <img src="https://github.com/Heck43/Heck43/blob/output/github-contribution-grid-snake.svg" alt="Snake animation" />
+     <img src="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake.svg" alt="Snake animation" />
 </div>
 
 ## 📫 Связаться со мной
