@@ -35,7 +35,7 @@
 ## 🐍 Активность на GitHub
 
 <div align="center">
-  <img src="https://github.com/ВАШЕ_ИМЯ_ПОЛЬЗОВАТЕЛЯ/Heck43/blob/output/github-contribution-grid-snake.svg" alt="Snake animation" />
+  <img src="https://github.com/Heck43/Heck43/blob/output/github-contribution-grid-snake.svg" alt="Snake animation" />
 </div>
 
 ## 📫 Связаться со мной
