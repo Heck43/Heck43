@@ -36,7 +36,7 @@
 <tr>
 <td width="30%" align="center">
 
-<img src="ССЫЛКА_НА_ВАШУ_КАРТИНКУ_СЛЕВА" width="100%" alt="Left Image"/>
+<img src="https://imgur.com/a/9LTojhC" width="100%" alt="Left Image"/>
 
 </td>
 
