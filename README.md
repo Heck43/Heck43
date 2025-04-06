@@ -26,19 +26,6 @@ k# 👋 Привет, я [Ваше_Имя]!
   <!-- Добавьте другие технологии, которые вы используете -->
 </div>
 
-## 🏆 Трофеи GitHub
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=Heck43&theme=radical&no-frame=true&no-bg=true&margin-w=4" alt="GitHub Trophies" />
-</div>
-
-## 🐍 Активность на GitHub
-
-<div align="center">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake.svg">
-  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake.svg">
-</div>
 
 ## 📫 Связаться со мной
 
@@ -48,14 +35,9 @@ k# 👋 Привет, я [Ваше_Имя]!
   <a href="https://discord.com/users/ваш_дискорд_id"><img src="https://img.shields.io/badge/-Discord-7289DA?style=flat-square&logo=discord&logoColor=white" /></a>
 </div>
 
-## 👀 Счётчик просмотров профиля
+ ## 👀 Счётчик просмотров профиля
 
 <div align="center">
   <img src="https://komarev.com/ghpvc/?username=Heck43&style=flat-square&color=blueviolet" alt="Profile views" />
 </div>
 
----
-
-<div align="center">
-  <img src="https://forthebadge.com/images/badges/built-with-love.svg" />
-</div> 
