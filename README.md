@@ -1,28 +1,27 @@
-<div align="center">
   <table width="100%">
     <tr>
-      <td width="75%" align="left">
+      <td width="?5" align="left">
         
-# 👋 Привет, я [Ваше_Имя]!
+# 👋 Привет, я Heck43!
 
 ### 👨‍💻 Обо мне:
 <table width="100%">
   <tr>
-    <td width="50%">
+    <td width="650">
       
-- 🎮 Увлекаюсь играми и разработкой
-- 🌱 Изучаю новые технологии
-    </td>
-    <td width="50%">
-      
-- 💡 Люблю создавать интересные проекты
+- 💡 Я начинающий програмист (мне 17лет)
+- 🎯 Учусь в академии Top (1 курс)
+- 🌱 Изучаю новые языки програмирование
+- 💡 Люблю создавать интересные
 - 🎯 Стремлюсь к развитию в IT сфере
+      
+
     </td>
   </tr>
 </table>
       </td>
-      <td width="25%" align="right">
-        <img src="ССЫЛКА_НА_МАЛЕНЬКУЮ_КАРТИНКУ" width="200" alt="Profile Picture"/>
+      <td width="35%" align="right">
+        <img src="https://i.imgur.com/0LEN1bo.png" width="600" height=350 alt="Profile Picture"/>
       </td>
     </tr>
   </table>
@@ -36,7 +35,7 @@
 <tr>
 <td width="30%" align="center">
 
-<img src="https://imgur.com/a/9LTojhC" width="100%" alt="Left Image"/>
+<img src="https://i.imgur.com/RlEi0DH.png" width="100%" alt="Left Image"/>
 
 </td>
 
@@ -54,13 +53,13 @@
 
 <td width="30%" align="center">
 
-<img src="ССЫЛКА_НА_ВАШ_GIF_СПРАВА" width="100%" alt="Right GIF"/>
+<img src="https://i.imgur.com/k8thJ0m.png" width="100%" alt="Right GIF"/>
 
 </td>
 </tr>
 </table>
 
-## 🛠️ Технологии и Инструменты
+## 🛠️ Какие языки и где я работаю
 
 <div align="center">
   <img src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
@@ -74,17 +73,10 @@
 ## 🛠️ Связаться со мной
 
 <div align="center">
-  <a href="mailto:ваша.почта@example.com"><img src="https://img.shields.io/badge/-Email-D14836?style=flat-square&logo=gmail&logoColor=white" /></a>
-  <a href="https://t.me/ваш_телеграм"><img src="https://img.shields.io/badge/-Telegram-2CA5E0?style=flat-square&logo=telegram&logoColor=white" /></a>
-  <a href="https://discord.com/users/ваш_дискорд_id"><img src="https://img.shields.io/badge/-Discord-7289DA?style=flat-square&logo=discord&logoColor=white" /></a>
-</div>
-
-## 👀 Счётчик просмотров профиля
-
+  <a href="mailto:lolnektyr@gmail.com"><img src="https://img.shields.io/badge/-Email-D14836?style=flat-square&logo=gmail&logoColor=white" /></a>
+  <a href="https://t.me/Heck1337"><img src="https://img.shields.io/badge/-Telegram-2CA5E0?style=flat-square&logo=telegram&logoColor=white" /></a>
+  <a href="https://discord.gg/BMTCDDbpFh"><img src="https://img.shields.io/badge/-Discord-7289DA?style=flat-square&logo=discord&logoColor=white" /></a>
 <div align="center">
   <img src="https://komarev.com/ghpvc/?username=Heck43&style=flat-square&color=blueviolet" alt="Profile views" />
 </div>
 
-<div align="center">
-  <img src="https://forthebadge.com/images/badges/built-with-love.svg" />
-</div> 
