@@ -49,7 +49,7 @@
 ## 👀 Счётчик просмотров профиля
 
 <div align="center">
-  <img src="https://komarev.com/ghpvc/?username=ВАШЕ_ИМЯ_ПОЛЬЗОВАТЕЛЯ&style=flat-square&color=blueviolet" alt="Profile views" />
+  <img src="https://komarev.com/ghpvc/?username=Heck43&style=flat-square&color=blueviolet" alt="Profile views" />
 </div>
 
 ---
