@@ -1,4 +1,4 @@
-# 👋 Привет, я [Ваше_Имя]!
+# 👋 Привет, я Heck43!
 
 <div align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&duration=3000&pause=1000&color=F7F7F7&center=true&vCenter=true&width=435&lines=Разработчик;Энтузиаст+Open+Source;Любитель+технологий" alt="Typing SVG" />
@@ -7,11 +7,11 @@
 ## 📊 GitHub Статистика
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ВАШЕ_ИМЯ_ПОЛЬЗОВАТЕЛЯ&show_icons=true&theme=radical" alt="GitHub Stats" width="45%" />
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=ВАШЕ_ИМЯ_ПОЛЬЗОВАТЕЛЯ&theme=radical" alt="GitHub Streak" width="45%" />
+  <img src="https://github-readme-stats.vercel.app/api?username=Heck43&show_icons=true&theme=radical" alt="GitHub Stats" width="45%" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Heck43&theme=radical" alt="GitHub Streak" width="45%" />
 </div>
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ВАШЕ_ИМЯ_ПОЛЬЗОВАТЕЛЯ&layout=compact&theme=radical" alt="Top Languages" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Heck43&layout=compact&theme=radical" alt="Top Languages" />
 </div>
 
 ## 🛠️ Технологии и Инструменты
@@ -29,13 +29,13 @@
 ## 🏆 Трофеи GitHub
 
 <div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=ВАШЕ_ИМЯ_ПОЛЬЗОВАТЕЛЯ&theme=radical&no-frame=true&no-bg=true&margin-w=4" alt="GitHub Trophies" />
+  <img src="https://github-profile-trophy.vercel.app/?username=Heck43&theme=radical&no-frame=true&no-bg=true&margin-w=4" alt="GitHub Trophies" />
 </div>
 
 ## 🐍 Активность на GitHub
 
 <div align="center">
-  <img src="https://github.com/ВАШЕ_ИМЯ_ПОЛЬЗОВАТЕЛЯ/ВАШЕ_ИМЯ_ПОЛЬЗОВАТЕЛЯ/blob/output/github-contribution-grid-snake.svg" alt="Snake animation" />
+  <img src="https://github.com/ВАШЕ_ИМЯ_ПОЛЬЗОВАТЕЛЯ/Heck43/blob/output/github-contribution-grid-snake.svg" alt="Snake animation" />
 </div>
 
 ## 📫 Связаться со мной
