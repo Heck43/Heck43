@@ -28,7 +28,7 @@
 </div>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&duration=3000&pause=1000&color=F7F7F7&center=true&vCenter=true&width=435&lines=Любитель+игр;Начинающий+програмист;like+Loona;Hi+all+users" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&duration=3000&pause=1000&color=F7F7F7&center=true&vCenter=true&width=435&lines=Любитель+игр;Начинающий+програмист;like+Furry;Hi+all+users" alt="Typing SVG" />
 </div>
 
 <table width="100%">
@@ -66,7 +66,6 @@
   <img src="https://img.shields.io/badge/-C sharp-F7DF1E?style=flat-square&logo=C Sharp&logoColor=black" />
   <img src="https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white" />
   <img src="https://img.shields.io/badge/-HTML-E34F26?style=flat-square&logo=html&logoColor=white" />
-  <img src="https://img.shields.io/badge/-CSS-1572B6?style=flat-square&logo=css&logoColor=white" />
   <img src="https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white" />
   <img src="https://img.shields.io/badge/-VS%20Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white" />
 </div>
