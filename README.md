@@ -1,82 +1,104 @@
-  <table width="100%">
-    <tr>
-      <td width="?5" align="left">
-        
-# 👋 Привет, я Heck43!
+<div align="center">
 
-### 👨‍💻 Обо мне:
-<table width="100%">
-  <tr>
-    <td width="500">
-      
-- 💡 Я начинающий програмист (мне 17лет)
-- 🎯 Учусь в академии Top (Уже 2 курс :3)
-- 🌱 я из России (город Кострома)
-- 💡 Люблю играть в: minecraft, postal 2, ATLYSS, Roblox
-- 🎯 Стремлюсь к развитию в IT сфере
-      
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,18,20,24&height=200&section=header&text=Heck43&fontSize=80&fontAlignY=35&animation=twinkling&fontColor=fff" />
 
-    </td>
-  </tr>
-</table>
-      </td>
-      <td width="35%" align="right">
-        <img src="https://i.imgur.com/0LEN1bo.png" width="600" height=350 alt="Profile Picture"/>
-      </td>
-    </tr>
-  </table>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=FF69B4&center=true&vCenter=true&width=600&lines=Начинающий+программист+🦊;Любитель+игр+🎮;Furry+Enthusiast+💕;Студент+Top+Academy+⚡)](https://git.io/typing-svg)
+
+<img src="https://i.imgur.com/0LEN1bo.png" width="350" alt="Profile Picture" style="border-radius: 50%; border: 5px solid #FF69B4;"/>
+
 </div>
 
+---
+
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&duration=3000&pause=1000&color=F7F7F7&center=true&vCenter=true&width=435&lines=Любитель+игр;Начинающий+програмист;like+Furry;Hi+all+users" alt="Typing SVG" />
+
+## 🌸 Обо мне
+
 </div>
 
 <table width="100%">
 <tr>
-<td width="30%" align="center">
+<td width="50%" valign="top">
 
-<img src="https://i.imgur.com/RlEi0DH.png" width="100%" alt="Left Image"/>
+### 💫 Личное
+
+```yaml
+Имя: Heck43
+Возраст: 17 лет
+Локация: Кострома, Россия 🇷🇺
+Статус: Student @ Top Academy (2 курс)
+Цель: Развитие в IT сфере
+Интересы: Coding + Gaming + Furry
+```
+
+### 🎮 Любимые игры
+
+<img src="https://img.shields.io/badge/Minecraft-62B47A?style=for-the-badge&logo=minecraft&logoColor=white" />
+<img src="https://img.shields.io/badge/Postal_2-FF0000?style=for-the-badge&logo=steam&logoColor=white" />
+<img src="https://img.shields.io/badge/ATLYSS-9146FF?style=for-the-badge&logo=gamepad&logoColor=white" />
+<img src="https://img.shields.io/badge/Roblox-000000?style=for-the-badge&logo=roblox&logoColor=white" />
 
 </td>
+<td width="50%" valign="top">
 
-<td width="40%" align="center">
+### 🛠️ Технологии
 
-## 📊 GitHub Статистика
+<img src="https://skillicons.dev/icons?i=ts,cs,py,html,css,js,git,vscode,github,discord&perline=5" />
 
-<img src="https://github-readme-stats.vercel.app/api?username=Heck43&show_icons=true&theme=radical" alt="GitHub Stats" width="100%" />
+### 📊 Активность
 
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=Heck43&theme=radical" alt="GitHub Streak" width="100%" />
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Heck43&layout=compact&theme=radical" alt="Top Languages" width="100%" />
-
-</td>
-
-<td width="30%" align="center">
-
-<img src="https://i.imgur.com/k8thJ0m.png" width="100%" alt="Right GIF"/>
+<!--START_SECTION:waka-->
+![Code Time](https://img.shields.io/badge/Code%20Time-Постоянно-blueviolet?style=flat-square)
+![Profile Views](https://komarev.com/ghpvc/?username=Heck43&style=flat-square&color=FF69B4)
+<!--END_SECTION:waka-->
 
 </td>
 </tr>
 </table>
 
-## 🛠️ Какие языки и где я работаю
+---
 
 <div align="center">
-  <img src="https://img.shields.io/badge/-TypeScript-F7DF1E?style=flat-square&logo=Typescript&logoColor=black" />
-  <img src="https://img.shields.io/badge/-C sharp-F7DF1E?style=flat-square&logo=C Sharp&logoColor=black" />
-  <img src="https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/-HTML-E34F26?style=flat-square&logo=html&logoColor=white" />
-  <img src="https://img.shields.io/badge/-Git-F05032?style=flat-square&logo=git&logoColor=white" />
-  <img src="https://img.shields.io/badge/-VS%20Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white" />
+
+## 🐍 Змейка ест мои коммиты
+
+![snake gif](https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake.svg)
+
 </div>
 
-## 🛠️ Связаться со мной
+---
 
 <div align="center">
-  <a href="mailto:lolnektyr@gmail.com"><img src="https://img.shields.io/badge/-Email-D14836?style=flat-square&logo=gmail&logoColor=white" /></a>
-  <a href="https://t.me/Heck1337"><img src="https://img.shields.io/badge/-Telegram-2CA5E0?style=flat-square&logo=telegram&logoColor=white" /></a>
-  <a href="https://discord.gg/BMTCDDbpFh"><img src="https://img.shields.io/badge/-Discord-7289DA?style=flat-square&logo=discord&logoColor=white" /></a>
-<div align="center">
-  <img src="https://komarev.com/ghpvc/?username=Heck43&style=flat-square&color=blueviolet" alt="Profile views" />
+
+## 📊 3D График вкладов
+
+![](https://raw.githubusercontent.com/Heck43/Heck43/main/profile-3d-contrib/profile-night-rainbow.svg)
+
 </div>
+
+---
+
+<div align="center">
+
+## 💌 Связь со мной
+
+<a href="mailto:lolnektyr@gmail.com">
+  <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+</a>
+<a href="https://t.me/Heck1337">
+  <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" />
+</a>
+<a href="https://discord.gg/BMTCDDbpFh">
+  <img src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" />
+</a>
+
+### 🌟 Не забудь поставить звёздочку репозиториям, если понравились! 🌟
+
+<br>
+
+![](https://count.getloli.com/get/@Heck43?theme=rule34)
+
+</div>
+
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,18,20,24&height=120&section=footer" />
 
