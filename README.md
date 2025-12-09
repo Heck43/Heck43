@@ -1,8 +1,8 @@
 <div align="center">
 
-<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,18,20,24&height=200&section=header&text=Heck43&fontSize=80&fontAlignY=35&animation=twinkling&fontColor=fff" />
+<img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,8,12,16,20&height=200&section=header&text=Heck43&fontSize=70&fontAlign=50&fontAlignY=35&animation=twinkling&fontColor=D3D3D3" />
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=FF69B4&center=true&vCenter=true&width=600&lines=Начинающий+программист+🦊;Любитель+игр+🎮;Furry+Enthusiast+💕;Студент+Top+Academy+⚡)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=FF69B4&center=true&vCenter=true&width=600&lines=like+furry+:3;game_coding+🎮;pizdec+💀;zx+%5Ew%5E;17+yo+developer+🦊;Кострома+🇷🇺)](https://git.io/typing-svg)
 
 <img src="https://i.imgur.com/0LEN1bo.png" width="350" alt="Profile Picture" style="border-radius: 50%; border: 5px solid #FF69B4;"/>
 
@@ -43,13 +43,14 @@
 
 ### 🛠️ Технологии
 
-<img src="https://skillicons.dev/icons?i=ts,cs,py,html,css,js,git,vscode,github,discord&perline=5" />
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+<img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white" />
+<img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white" />
 
 ### 📊 Активность
 
 <!--START_SECTION:waka-->
-![Code Time](https://img.shields.io/badge/Code%20Time-Постоянно-blueviolet?style=flat-square)
-![Profile Views](https://komarev.com/ghpvc/?username=Heck43&style=flat-square&color=FF69B4)
+![Code Time](https://img.shields.io/badge/Code%20Time-18h%20Evening-blueviolet?style=flat-square)
 <!--END_SECTION:waka-->
 
 </td>
@@ -60,19 +61,7 @@
 
 <div align="center">
 
-## 🐍 Змейка ест мои коммиты
-
 ![snake gif](https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake.svg)
-
-</div>
-
----
-
-<div align="center">
-
-## 📊 3D График вкладов
-
-![](https://raw.githubusercontent.com/Heck43/Heck43/main/profile-3d-contrib/profile-night-rainbow.svg)
 
 </div>
 

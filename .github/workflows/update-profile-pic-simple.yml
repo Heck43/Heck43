@@ -1,0 +1,80 @@
+name: Update Profile Picture from ImgBB
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Каждый час
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq curl
+        
+      - name: Get Random Image from ImgBB Album
+        run: |
+          # ImgBB API ключ
+          API_KEY="8210be0791dd4e570500e79ed8d8d54f"
+          
+          # ID альбома (из ссылки https://ibb.co/album/6R58df)
+          ALBUM_ID="6R58df"
+          
+          # Парсим страницу альбома и получаем список картинок
+          echo "Получаем список картинок из альбома..."
+          
+          # Скачиваем страницу альбома
+          PAGE=$(curl -s "https://ibb.co/album/$ALBUM_ID")
+          
+          # Извлекаем все ссылки на картинки (ищем паттерн i.ibb.co)
+          IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u)
+          
+          # Считаем количество картинок
+          IMAGE_COUNT=$(echo "$IMAGES" | wc -l)
+          echo "Найдено $IMAGE_COUNT картинок"
+          
+          if [ "$IMAGE_COUNT" -eq 0 ]; then
+            echo "Не удалось получить картинки из альбома"
+            exit 1
+          fi
+          
+          # Выбираем рандомную картинку
+          RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
+          NEW_IMAGE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
+          
+          echo "Выбрана картинка: $NEW_IMAGE"
+          
+          # Сохраняем текущую картинку из README
+          CURRENT_IMAGE=$(grep -oP '<img src="\K[^"]+(?=" width="350")' README.md)
+          echo "Текущая картинка: $CURRENT_IMAGE"
+          
+          # Если новая картинка такая же как текущая, выбираем другую
+          if [ "$NEW_IMAGE" == "$CURRENT_IMAGE" ] && [ "$IMAGE_COUNT" -gt 1 ]; then
+            echo "Выбрана та же картинка, выбираем другую..."
+            RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
+            NEW_IMAGE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
+            echo "Новая картинка: $NEW_IMAGE"
+          fi
+          
+          # Заменяем картинку в README (ищем любую картинку с width="350")
+          sed -i "s|<img src=\"[^\"]*\" width=\"350\"|<img src=\"$NEW_IMAGE\" width=\"350\"|g" README.md
+          
+          echo "Картинка обновлена!"
+          
+      - name: Commit and Push
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "Нет изменений"
+          else
+            git commit -m "🎨 Обновлена картинка профиля (Loona)"
+            git push
+          fi
+
