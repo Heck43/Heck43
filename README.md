@@ -2,7 +2,7 @@
 
 <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,8,12,16,20&height=200&section=header&text=Heck43&fontSize=70&fontAlign=50&fontAlignY=35&animation=twinkling&fontColor=D3D3D3" />
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=FF69B4&center=true&vCenter=true&width=600&lines=like+furry+:3;game_coding+🎮;pizdec+💀;zx+%5Ew%5E;17+yo+developer+🦊;Кострома+🇷🇺)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=FF69B4&center=true&vCenter=true&width=600&lines=like+furry+:3;game_coding+;pizdec+;zx+%5Ew%5E;17+yo+developer+🦊;Кострома+🇷🇺)](https://git.io/typing-svg)
 
 <img src="https://i.imgur.com/0LEN1bo.png" width="350" alt="Profile Picture" style="border-radius: 50%; border: 5px solid #FF69B4;"/>
 
