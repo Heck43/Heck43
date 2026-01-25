@@ -19,6 +19,7 @@ jobs:
         
       - name: Get Random Image from ImgBB Album
         run: |
+          set +e
           # ImgBB API ключ
           API_KEY="8210be0791dd4e570500e79ed8d8d54f"
           
