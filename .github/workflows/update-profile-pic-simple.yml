@@ -2,116 +2,180 @@ name: Update Profile Picture from ImgBB
 
 on:
   schedule:
-    - cron: "0 * * * *"  # Каждый час
+    - cron: "0 * * * *"  # каждый час
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Playwright (Chromium)
         run: |
-          sudo apt-get update
-          sudo apt-get install -y jq curl
-        
-      - name: Get Random Image from ImgBB Album
+          npm init -y >/dev/null 2>&1
+          npm i --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Pick random image from ImgBB album (loads ALL)
+        env:
+          ALBUM_ID: "6R58df"
         run: |
-          # ImgBB API ключ
-          API_KEY="8210be0791dd4e570500e79ed8d8d54f"
-          
-          # ID альбома (из ссылки https://ibb.co/album/6R58df)
-          ALBUM_ID="6R58df"
-          
-          # Парсим альбом и получаем список картинок
-          echo "Получаем список картинок из альбома..."
-          
-          # Пробуем через API, чтобы получить полный список
-          API_URL="https://api.imgbb.com/1/album/$ALBUM_ID?key=$API_KEY"
-          API_JSON=$(curl -s "$API_URL")
-          IMAGES=$(echo "$API_JSON" | jq -r '.data.images[]? | .url // .image?.url // .thumb?.url // empty' \
-            | grep -E 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)$' \
-            | sort -u)
-          
-          # Если API не дал ссылок, fallback на HTML
-          if [ -z "$IMAGES" ]; then
-            PAGE=$(curl -s "https://ibb.co/album/$ALBUM_ID")
-            IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u)
-          fi
-          
-          # Считаем количество картинок
-          IMAGE_COUNT=$(echo "$IMAGES" | wc -l | tr -d ' ')
-          echo "Найдено $IMAGE_COUNT картинок"
-          
-          if [ "$IMAGE_COUNT" -eq 0 ]; then
-            echo "Не удалось получить картинки из альбома"
-            exit 1
-          fi
-          
-          # Проверяем выбранную картинку, чтобы отсеять битые/не-изображения
-          is_valid_image() {
-            local url="$1"
-            local headers status ctype clen
-            headers=$(curl -sIL -A "Mozilla/5.0" "$url" | tr -d '\r')
-            status=$(echo "$headers" | awk 'tolower($0) ~ /^http/ {code=$2} END{print code}')
-            ctype=$(echo "$headers" | awk -F': ' 'tolower($1)=="content-type" {print tolower($2); exit}')
-            clen=$(echo "$headers" | awk -F': ' 'tolower($1)=="content-length" {print $2; exit}')
-            if [ "$status" != "200" ]; then
-              return 1
-            fi
-            if [ -n "$ctype" ] && [[ "$ctype" != image/* ]]; then
-              return 1
-            fi
-            if [ -n "$clen" ] && [ "$clen" -gt 10000000 ]; then
-              return 1
-            fi
-            return 0
+          node <<'NODE'
+          const fs = require('fs');
+          const { chromium } = require('playwright');
+
+          const albumId = process.env.ALBUM_ID;
+          const albumUrl = `https://ibb.co/album/${albumId}`;
+          const readmePath = 'README.md';
+
+          function extractCurrentImageUrl(readme) {
+            // вытаскиваем src у <img ... width="350"
+            const m = readme.match(/<img\s+src="([^"]+)"\s+width="350"/i);
+            if (!m) return null;
+            return m[1].split('?')[0]; // без cache-bust
           }
-          
-          # Выбираем рандомную картинку (с ограничением попыток)
-          NEW_IMAGE=""
-          ATTEMPTS=0
-          MAX_ATTEMPTS=5
-          while [ "$ATTEMPTS" -lt "$MAX_ATTEMPTS" ]; do
-            RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
-            CANDIDATE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
-            if is_valid_image "$CANDIDATE"; then
-              NEW_IMAGE="$CANDIDATE"
-              break
-            fi
-            ATTEMPTS=$((ATTEMPTS + 1))
-          done
-          
-          if [ -z "$NEW_IMAGE" ]; then
-            echo "Не удалось выбрать валидную картинку за $MAX_ATTEMPTS попыток"
-            exit 1
-          fi
-          
-          # Обходим кэш GitHub для изображений
-          CACHE_BUST=$(date +%s)
-          NEW_IMAGE="${NEW_IMAGE}?v=${CACHE_BUST}"
-          
-          echo "Выбрана картинка: $NEW_IMAGE"
-          
-          # Сохраняем текущую картинку из README
-          CURRENT_IMAGE=$(grep -oP '<img src="\K[^"]+(?=" width="350")' README.md)
-          echo "Текущая картинка: $CURRENT_IMAGE"
-          
-          # Если новая картинка такая же как текущая, выбираем другую
-          if [ "$NEW_IMAGE" == "$CURRENT_IMAGE" ] && [ "$IMAGE_COUNT" -gt 1 ]; then
-            echo "Выбрана та же картинка, выбираем другую..."
-            RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
-            NEW_IMAGE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
-            echo "Новая картинка: $NEW_IMAGE"
-          fi
-          
-          # Заменяем картинку в README (ищем любую картинку с width="350")
-          sed -i "s|<img src=\"[^\"]*\" width=\"350\"|<img src=\"$NEW_IMAGE\" width=\"350\"|g" README.md
-          
-          echo "Картинка обновлена!"
-          
+
+          function unique(arr) {
+            return [...new Set(arr)];
+          }
+
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const context = await browser.newContext({
+              locale: 'en-US',
+              userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36'
+            });
+            const page = await context.newPage();
+
+            const readme = fs.existsSync(readmePath) ? fs.readFileSync(readmePath, 'utf8') : '';
+            const current = extractCurrentImageUrl(readme);
+
+            console.log(`Opening album: ${albumUrl}`);
+            await page.goto(albumUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+
+            // Функция: собрать id картинок (viewer ids) со страницы
+            async function collectViewerIds() {
+              const hrefs = await page.$$eval('a[href]', as => as.map(a => a.getAttribute('href')).filter(Boolean));
+              // viewer ссылки обычно вида "/Ab12CdE" (есть цифры), исключаем /album/...
+              const ids = hrefs
+                .filter(h => /^\/[A-Za-z0-9]{5,12}$/.test(h))
+                .map(h => h.slice(1))
+                .filter(id => /\d/.test(id)); // чтобы не схватить /login, /about и т.п.
+              return unique(ids);
+            }
+
+            // Жмём "Load more" пока добавляются новые картинки или кнопка не исчезнет
+            let ids = await collectViewerIds();
+            console.log(`Initially visible images: ${ids.length}`);
+
+            const loadMoreLocator = page.locator('button:has-text("Load more"), a:has-text("Load more")');
+
+            for (let i = 0; i < 60; i++) { // лимит на всякий
+              const btnCount = await loadMoreLocator.count();
+              if (btnCount === 0) break;
+
+              const before = ids.length;
+
+              try {
+                const btn = loadMoreLocator.first();
+                await btn.scrollIntoViewIfNeeded();
+                await btn.click({ timeout: 7000 });
+              } catch (e) {
+                // если клик не вышел — выходим, чтобы не зациклиться
+                break;
+              }
+
+              // ждём чуть-чуть и пересобираем список
+              await page.waitForTimeout(1200);
+              const next = await collectViewerIds();
+              ids = next;
+
+              console.log(`After Load more #${i + 1}: ${ids.length}`);
+
+              if (ids.length <= before) {
+                // больше не растёт — значит всё
+                break;
+              }
+            }
+
+            if (!ids.length) {
+              console.error('No images found in album after loading.');
+              process.exit(1);
+            }
+
+            console.log(`Total collected viewer ids: ${ids.length}`);
+
+            // Выбираем случайную (и не текущую)
+            function pickRandom(arr) {
+              return arr[Math.floor(Math.random() * arr.length)];
+            }
+
+            let chosenUrl = null;
+            for (let attempt = 0; attempt < 12; attempt++) {
+              const id = pickRandom(ids);
+              const viewerUrl = `https://ibb.co/${id}`;
+
+              await page.goto(viewerUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+
+              // og:image почти всегда содержит прямую ссылку i.ibb.co
+              const og = await page.locator('meta[property="og:image"]').getAttribute('content').catch(() => null);
+              const direct = og && og.startsWith('https://i.ibb.co/') ? og : null;
+
+              if (!direct) continue;
+
+              const base = direct.split('?')[0];
+              if (current && base === current && ids.length > 1) {
+                continue; // не берём ту же самую
+              }
+
+              // cache bust для GitHub
+              chosenUrl = `${base}?v=${Date.now()}`;
+              break;
+            }
+
+            if (!chosenUrl) {
+              console.error('Failed to choose a valid direct image URL.');
+              process.exit(1);
+            }
+
+            // Передаём в следующий step через $GITHUB_ENV
+            fs.appendFileSync(process.env.GITHUB_ENV, `NEW_IMAGE=${chosenUrl}\n`);
+            console.log(`Chosen: ${chosenUrl}`);
+
+            await browser.close();
+          })();
+          NODE
+
+      - name: Update README
+        run: |
+          python3 - <<'PY'
+          import os, re, pathlib
+
+          new = os.environ["NEW_IMAGE"]
+          p = pathlib.Path("README.md")
+          text = p.read_text(encoding="utf-8")
+
+          pattern = r'<img\s+src="[^"]*"\s+width="350"'
+          repl = f'<img src="{new}" width="350"'
+
+          updated, n = re.subn(pattern, repl, text, flags=re.IGNORECASE)
+          if n == 0:
+            raise SystemExit("❌ Не нашёл <img ... width=\"350\"> в README.md")
+
+          p.write_text(updated, encoding="utf-8")
+          print(f"✅ Updated {n} occurrence(s)")
+          PY
+
       - name: Commit and Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -120,6 +184,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "Нет изменений"
           else
-            git commit -m "🎨 Обновлена картинка профиля (Loona)"
+            git commit -m "🎨 Обновлена картинка профиля"
             git push
           fi
