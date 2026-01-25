@@ -34,7 +34,16 @@ jobs:
           # Извлекаем все ссылки на картинки (ищем паттерн i.ibb.co)
           IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u)
           
-          # Проверяем ссылки, чтобы отсеять битые/не-изображения
+          # Считаем количество картинок
+          IMAGE_COUNT=$(echo "$IMAGES" | wc -l | tr -d ' ')
+          echo "Найдено $IMAGE_COUNT валидных картинок"
+          
+          if [ "$IMAGE_COUNT" -eq 0 ]; then
+            echo "Не удалось получить картинки из альбома"
+            exit 1
+          fi
+          
+          # Проверяем выбранную картинку, чтобы отсеять битые/не-изображения
           is_valid_image() {
             local url="$1"
             local headers status ctype clen
@@ -54,30 +63,24 @@ jobs:
             return 0
           }
           
-          VALID_IMAGES=""
-          while read -r url; do
-            [ -z "$url" ] && continue
-            if is_valid_image "$url"; then
-              VALID_IMAGES="${VALID_IMAGES}${url}"$'\n'
+          # Выбираем рандомную картинку (с ограничением попыток)
+          NEW_IMAGE=""
+          ATTEMPTS=0
+          MAX_ATTEMPTS=5
+          while [ "$ATTEMPTS" -lt "$MAX_ATTEMPTS" ]; do
+            RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
+            CANDIDATE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
+            if is_valid_image "$CANDIDATE"; then
+              NEW_IMAGE="$CANDIDATE"
+              break
             fi
-          done <<< "$IMAGES"
+            ATTEMPTS=$((ATTEMPTS + 1))
+          done
           
-          if [ -n "$VALID_IMAGES" ]; then
-            IMAGES="$VALID_IMAGES"
-          fi
-          
-          # Считаем количество картинок
-          IMAGE_COUNT=$(echo "$IMAGES" | wc -l | tr -d ' ')
-          echo "Найдено $IMAGE_COUNT валидных картинок"
-          
-          if [ "$IMAGE_COUNT" -eq 0 ]; then
-            echo "Не удалось получить картинки из альбома"
+          if [ -z "$NEW_IMAGE" ]; then
+            echo "Не удалось выбрать валидную картинку за $MAX_ATTEMPTS попыток"
             exit 1
           fi
-          
-          # Выбираем рандомную картинку
-          RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
-          NEW_IMAGE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
           
           # Обходим кэш GitHub для изображений
           CACHE_BUST=$(date +%s)
