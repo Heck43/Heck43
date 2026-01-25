@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
+
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -19,7 +19,6 @@ jobs:
         
       - name: Get Random Image from ImgBB Album
         run: |
-          set +e
           # ImgBB API ключ
           API_KEY="8210be0791dd4e570500e79ed8d8d54f"
           
@@ -29,47 +28,24 @@ jobs:
           # Парсим альбом и получаем список картинок
           echo "Получаем список картинок из альбома..."
           
-          # Парсим HTML альбома постранично и собираем ссылки на просмотр из data-object
-          VIEWS=""
-          PAGE_NUM=1
-          MAX_PAGES=50
-          SEEK=""
-          PREV_PAGE_VIEWS=""
-          while [ "$PAGE_NUM" -le "$MAX_PAGES" ]; do
-            PAGE_URL="https://ibb.co/album/$ALBUM_ID?page=$PAGE_NUM"
-            if [ -n "$SEEK" ]; then
-              PAGE_URL="${PAGE_URL}&seek=${SEEK}"
-            fi
-            PAGE=$(curl -sL -A "Mozilla/5.0" "$PAGE_URL")
-            PAGE_VIEWS=$(echo "$PAGE" \
-              | grep -oP 'url_viewer%22%3A%22https%3A%5C%2F%5C%2Fibb.co%5C%2F[^%]+' \
-              | sed 's/^url_viewer%22%3A%22//' \
-              | python3 -c 'import sys,urllib.parse; print("\n".join(urllib.parse.unquote(l.strip()).replace("\\\\","") for l in sys.stdin if l.strip()))')
-            PAGE_COUNT=$(echo "$PAGE_VIEWS" | sed '/^$/d' | wc -l | tr -d ' ')
-            if [ "$PAGE_COUNT" -eq 0 ]; then
-              echo "Страница $PAGE_NUM: найдено 0, стоп"
-              break
-            fi
-            if [ "$PAGE_VIEWS" = "$PREV_PAGE_VIEWS" ]; then
-              echo "Страница $PAGE_NUM: совпадает с предыдущей, стоп"
-              break
-            fi
-            VIEWS="${VIEWS}${PAGE_VIEWS}"$'\n'
-            SEEK=$(echo "$PAGE" | grep -oP 'data-seek="\\K[^"]+' | head -n 1 || true)
-            if [ -z "$SEEK" ]; then
-              SEEK=$(echo "$PAGE" | grep -oP "data-seek='\\K[^']+" | head -n 1 || true)
-            fi
-            echo "Страница $PAGE_NUM: найдено $PAGE_COUNT, seek=${SEEK:-нет}"
-            PREV_PAGE_VIEWS="$PAGE_VIEWS"
-            PAGE_NUM=$((PAGE_NUM + 1))
-          done
-          VIEWS=$(echo "$VIEWS" | sed '/^$/d' | sort -u)
+          # Пробуем через API, чтобы получить полный список
+          API_URL="https://api.imgbb.com/1/album/$ALBUM_ID?key=$API_KEY"
+          API_JSON=$(curl -s "$API_URL")
+          IMAGES=$(echo "$API_JSON" | jq -r '.data.images[]? | .url // .image?.url // .thumb?.url // empty' \
+            | grep -E 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)$' \
+            | sort -u)
           
-          # Считаем количество ссылок на просмотр
-          VIEW_COUNT=$(echo "$VIEWS" | wc -l | tr -d ' ')
-          echo "Найдено $VIEW_COUNT ссылок на просмотр"
+          # Если API не дал ссылок, fallback на HTML
+          if [ -z "$IMAGES" ]; then
+            PAGE=$(curl -s "https://ibb.co/album/$ALBUM_ID")
+            IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u)
+          fi
           
-          if [ "$VIEW_COUNT" -eq 0 ]; then
+          # Считаем количество картинок
+          IMAGE_COUNT=$(echo "$IMAGES" | wc -l | tr -d ' ')
+          echo "Найдено $IMAGE_COUNT картинок"
+          
+          if [ "$IMAGE_COUNT" -eq 0 ]; then
             echo "Не удалось получить картинки из альбома"
             exit 1
           fi
@@ -94,16 +70,14 @@ jobs:
             return 0
           }
           
-          # Выбираем рандомную ссылку на просмотр и вытаскиваем прямую ссылку на картинку
+          # Выбираем рандомную картинку (с ограничением попыток)
           NEW_IMAGE=""
           ATTEMPTS=0
           MAX_ATTEMPTS=5
           while [ "$ATTEMPTS" -lt "$MAX_ATTEMPTS" ]; do
-            RANDOM_LINE=$((RANDOM % VIEW_COUNT + 1))
-            VIEW_URL=$(echo "$VIEWS" | sed -n "${RANDOM_LINE}p")
-            VIEW_PAGE=$(curl -sL -A "Mozilla/5.0" "$VIEW_URL")
-            CANDIDATE=$(echo "$VIEW_PAGE" | grep -oP '<meta property="og:image" content="\K[^"]+' || true)
-            if [ -n "$CANDIDATE" ] && is_valid_image "$CANDIDATE"; then
+            RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
+            CANDIDATE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
+            if is_valid_image "$CANDIDATE"; then
               NEW_IMAGE="$CANDIDATE"
               break
             fi
@@ -126,12 +100,10 @@ jobs:
           echo "Текущая картинка: $CURRENT_IMAGE"
           
           # Если новая картинка такая же как текущая, выбираем другую
-          if [ "$NEW_IMAGE" == "$CURRENT_IMAGE" ] && [ "$VIEW_COUNT" -gt 1 ]; then
+          if [ "$NEW_IMAGE" == "$CURRENT_IMAGE" ] && [ "$IMAGE_COUNT" -gt 1 ]; then
             echo "Выбрана та же картинка, выбираем другую..."
-            RANDOM_LINE=$((RANDOM % VIEW_COUNT + 1))
-            VIEW_URL=$(echo "$VIEWS" | sed -n "${RANDOM_LINE}p")
-            VIEW_PAGE=$(curl -sL -A "Mozilla/5.0" "$VIEW_URL")
-            NEW_IMAGE=$(echo "$VIEW_PAGE" | grep -oP '<meta property="og:image" content="\\K[^"]+' || true)
+            RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
+            NEW_IMAGE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
             echo "Новая картинка: $NEW_IMAGE"
           fi
           
