@@ -34,9 +34,41 @@ jobs:
           # Извлекаем все ссылки на картинки (ищем паттерн i.ibb.co)
           IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u)
           
+          # Проверяем ссылки, чтобы отсеять битые/не-изображения
+          is_valid_image() {
+            local url="$1"
+            local headers status ctype clen
+            headers=$(curl -sIL -A "Mozilla/5.0" "$url" | tr -d '\r')
+            status=$(echo "$headers" | awk 'tolower($0) ~ /^http\\// {code=$2} END{print code}')
+            ctype=$(echo "$headers" | awk -F': ' 'tolower($1)=="content-type" {print tolower($2); exit}')
+            clen=$(echo "$headers" | awk -F': ' 'tolower($1)=="content-length" {print $2; exit}')
+            if [ "$status" != "200" ]; then
+              return 1
+            fi
+            if [ -n "$ctype" ] && [[ "$ctype" != image/* ]]; then
+              return 1
+            fi
+            if [ -n "$clen" ] && [ "$clen" -gt 10000000 ]; then
+              return 1
+            fi
+            return 0
+          }
+          
+          VALID_IMAGES=""
+          while read -r url; do
+            [ -z "$url" ] && continue
+            if is_valid_image "$url"; then
+              VALID_IMAGES="${VALID_IMAGES}${url}"$'\n'
+            fi
+          done <<< "$IMAGES"
+          
+          if [ -n "$VALID_IMAGES" ]; then
+            IMAGES="$VALID_IMAGES"
+          fi
+          
           # Считаем количество картинок
-          IMAGE_COUNT=$(echo "$IMAGES" | wc -l)
-          echo "Найдено $IMAGE_COUNT картинок"
+          IMAGE_COUNT=$(echo "$IMAGES" | wc -l | tr -d ' ')
+          echo "Найдено $IMAGE_COUNT валидных картинок"
           
           if [ "$IMAGE_COUNT" -eq 0 ]; then
             echo "Не удалось получить картинки из альбома"
@@ -46,6 +78,10 @@ jobs:
           # Выбираем рандомную картинку
           RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
           NEW_IMAGE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
+          
+          # Обходим кэш GitHub для изображений
+          CACHE_BUST=$(date +%s)
+          NEW_IMAGE="${NEW_IMAGE}?v=${CACHE_BUST}"
           
           echo "Выбрана картинка: $NEW_IMAGE"
           
@@ -77,4 +113,3 @@ jobs:
             git commit -m "🎨 Обновлена картинка профиля (Loona)"
             git push
           fi
-
