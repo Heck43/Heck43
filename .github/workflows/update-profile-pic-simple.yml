@@ -39,7 +39,7 @@ jobs:
               PAGE_URL="${PAGE_URL}&seek=${SEEK}"
             fi
             PAGE=$(curl -sL -A "Mozilla/5.0" "$PAGE_URL")
-            PAGE_VIEWS=$(python3 - <<'PY'
+            PAGE_VIEWS=$(echo "$PAGE" | python3 - <<'PY'
 import re, sys, json, urllib.parse
 html = sys.stdin.read()
 views = []
@@ -53,7 +53,7 @@ for m in re.findall(r"data-object='([^']+)'", html):
         views.append(url)
 print("\n".join(views))
 PY
-            <<< "$PAGE")
+            )
             PAGE_COUNT=$(echo "$PAGE_VIEWS" | sed '/^$/d' | wc -l | tr -d ' ')
             if [ "$PAGE_COUNT" -eq 0 ]; then
               echo "Страница $PAGE_NUM: найдено 0, стоп"
