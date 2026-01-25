@@ -28,41 +28,40 @@ jobs:
           # Парсим альбом и получаем список картинок
           echo "Получаем список картинок из альбома..."
           
-          # Парсим HTML альбома с пагинацией (next/seek) и собираем ссылки на просмотр
+          # Парсим HTML альбома постранично и собираем ссылки на просмотр из data-object
           VIEWS=""
-          CURRENT_URL="https://ibb.co/album/$ALBUM_ID?page=1"
           PAGE_NUM=1
           MAX_PAGES=50
+          SEEK=""
           while [ "$PAGE_NUM" -le "$MAX_PAGES" ]; do
-            PAGE=$(curl -sL -A "Mozilla/5.0" "$CURRENT_URL")
-            PAGE_VIEWS_ABS=$(echo "$PAGE" | grep -oP 'https://ibb\.co/[^"]+' | grep -v '/album/' || true)
-            PAGE_VIEWS_REL=$(echo "$PAGE" | grep -oP 'href="/[A-Za-z0-9]+"' | sed 's/href="\(.*\)"/\1/' | grep -v '^/album/' || true)
-            PAGE_VIEWS=$(printf "%s\n%s\n" "$PAGE_VIEWS_ABS" "$PAGE_VIEWS_REL" | sed 's|^/|https://ibb.co/|' | sed '/^$/d' | sort -u)
+            PAGE_URL="https://ibb.co/album/$ALBUM_ID?page=$PAGE_NUM"
+            if [ -n "$SEEK" ]; then
+              PAGE_URL="${PAGE_URL}&seek=${SEEK}"
+            fi
+            PAGE=$(curl -sL -A "Mozilla/5.0" "$PAGE_URL")
+            PAGE_VIEWS=$(python3 - <<'PY'
+import re, sys, json, urllib.parse
+html = sys.stdin.read()
+views = []
+for m in re.findall(r"data-object='([^']+)'", html):
+    try:
+        obj = json.loads(urllib.parse.unquote(m))
+    except Exception:
+        continue
+    url = obj.get("url_viewer") or obj.get("image", {}).get("url_viewer")
+    if url:
+        views.append(url)
+print("\n".join(views))
+PY
+            <<< "$PAGE")
             PAGE_COUNT=$(echo "$PAGE_VIEWS" | sed '/^$/d' | wc -l | tr -d ' ')
             if [ "$PAGE_COUNT" -eq 0 ]; then
+              echo "Страница $PAGE_NUM: найдено 0, стоп"
               break
             fi
             VIEWS="${VIEWS}${PAGE_VIEWS}"$'\n'
-            NEXT_URL=$(echo "$PAGE" | grep -oP 'data-pagination="next"[^>]*href="\\K[^"]+' || true)
-            if [ -z "$NEXT_URL" ]; then
-              SEEK=$(echo "$PAGE" | grep -oP 'data-action="load-more"[^>]*data-seek="\\K[^"]+' | head -n 1 || true)
-              if [ -n "$SEEK" ]; then
-                NEXT_PAGE=$((PAGE_NUM + 1))
-                NEXT_URL="https://ibb.co/album/$ALBUM_ID?page=$NEXT_PAGE&seek=$SEEK"
-              fi
-            fi
-            if [ -z "$NEXT_URL" ]; then
-              echo "Страница $PAGE_NUM: найдено $PAGE_COUNT, next=нет"
-              break
-            fi
-            NEXT_URL=$(echo "$NEXT_URL" | sed 's/&amp;/\\&/g')
-            case "$NEXT_URL" in
-              http*) ;;
-              /*) NEXT_URL="https://ibb.co$NEXT_URL" ;;
-              *) NEXT_URL="https://ibb.co/$NEXT_URL" ;;
-            esac
-            echo "Страница $PAGE_NUM: найдено $PAGE_COUNT, next=$NEXT_URL"
-            CURRENT_URL="$NEXT_URL"
+            SEEK=$(echo "$PAGE" | grep -oP 'data-action="load-more"[^>]*data-seek="\\K[^"]+' | head -n 1 || true)
+            echo "Страница $PAGE_NUM: найдено $PAGE_COUNT, seek=${SEEK:-нет}"
             PAGE_NUM=$((PAGE_NUM + 1))
           done
           VIEWS=$(echo "$VIEWS" | sed '/^$/d' | sort -u)
