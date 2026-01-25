@@ -33,6 +33,7 @@ jobs:
           PAGE_NUM=1
           MAX_PAGES=50
           SEEK=""
+          PREV_PAGE_VIEWS=""
           while [ "$PAGE_NUM" -le "$MAX_PAGES" ]; do
             PAGE_URL="https://ibb.co/album/$ALBUM_ID?page=$PAGE_NUM"
             if [ -n "$SEEK" ]; then
@@ -48,9 +49,17 @@ jobs:
               echo "Страница $PAGE_NUM: найдено 0, стоп"
               break
             fi
+            if [ "$PAGE_VIEWS" = "$PREV_PAGE_VIEWS" ]; then
+              echo "Страница $PAGE_NUM: совпадает с предыдущей, стоп"
+              break
+            fi
             VIEWS="${VIEWS}${PAGE_VIEWS}"$'\n'
-            SEEK=$(echo "$PAGE" | grep -oP 'data-action="load-more"[^>]*data-seek="\\K[^"]+' | head -n 1 || true)
+            SEEK=$(echo "$PAGE" | grep -oP 'data-seek="\\K[^"]+' | head -n 1 || true)
+            if [ -z "$SEEK" ]; then
+              SEEK=$(echo "$PAGE" | grep -oP "data-seek='\\K[^']+" | head -n 1 || true)
+            fi
             echo "Страница $PAGE_NUM: найдено $PAGE_COUNT, seek=${SEEK:-нет}"
+            PREV_PAGE_VIEWS="$PAGE_VIEWS"
             PAGE_NUM=$((PAGE_NUM + 1))
           done
           VIEWS=$(echo "$VIEWS" | sed '/^$/d' | sort -u)
