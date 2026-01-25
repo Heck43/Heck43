@@ -39,21 +39,7 @@ jobs:
               PAGE_URL="${PAGE_URL}&seek=${SEEK}"
             fi
             PAGE=$(curl -sL -A "Mozilla/5.0" "$PAGE_URL")
-            PAGE_VIEWS=$(echo "$PAGE" | python3 - <<'PY'
-import re, sys, json, urllib.parse
-html = sys.stdin.read()
-views = []
-for m in re.findall(r"data-object='([^']+)'", html):
-    try:
-        obj = json.loads(urllib.parse.unquote(m))
-    except Exception:
-        continue
-    url = obj.get("url_viewer") or obj.get("image", {}).get("url_viewer")
-    if url:
-        views.append(url)
-print("\n".join(views))
-PY
-            )
+            PAGE_VIEWS=$(echo "$PAGE" | python3 -c $'import re,sys,json,urllib.parse\nhtml=sys.stdin.read()\nviews=[]\n\ndef add(m):\n    try:\n        obj=json.loads(urllib.parse.unquote(m))\n        url=obj.get(\"url_viewer\") or obj.get(\"image\",{}).get(\"url_viewer\")\n        if url:\n            views.append(url)\n    except Exception:\n        pass\n\n[add(m) for m in re.findall(r\"data-object=\\\\\\'([^\\\\\\']+)\\\\\\'\", html)]\nprint(\"\\\\n\".join(views))')
             PAGE_COUNT=$(echo "$PAGE_VIEWS" | sed '/^$/d' | wc -l | tr -d ' ')
             if [ "$PAGE_COUNT" -eq 0 ]; then
               echo "Страница $PAGE_NUM: найдено 0, стоп"
