@@ -43,7 +43,7 @@ jobs:
               break
             fi
             VIEWS="${VIEWS}${PAGE_VIEWS}"$'\n'
-            NEXT_URL=$(echo "$PAGE" | grep -oP 'data-pagination="next" href="\\K[^"]+')
+            NEXT_URL=$(echo "$PAGE" | grep -oP 'data-pagination="next" href="\\K[^"]+' || true)
             if [ -z "$NEXT_URL" ]; then
               break
             fi
