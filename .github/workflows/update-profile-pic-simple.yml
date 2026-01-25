@@ -25,18 +25,25 @@ jobs:
           # ID альбома (из ссылки https://ibb.co/album/6R58df)
           ALBUM_ID="6R58df"
           
-          # Парсим страницу альбома и получаем список картинок
+          # Парсим альбом и получаем список картинок
           echo "Получаем список картинок из альбома..."
           
-          # Скачиваем страницу альбома
-          PAGE=$(curl -s "https://ibb.co/album/$ALBUM_ID")
+          # Пробуем через API, чтобы получить полный список
+          API_URL="https://api.imgbb.com/1/album/$ALBUM_ID?key=$API_KEY"
+          API_JSON=$(curl -s "$API_URL")
+          IMAGES=$(echo "$API_JSON" | jq -r '.data.images[]? | .url // .image?.url // .thumb?.url // empty' \
+            | grep -E 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)$' \
+            | sort -u)
           
-          # Извлекаем все ссылки на картинки (ищем паттерн i.ibb.co)
-          IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u)
+          # Если API не дал ссылок, fallback на HTML
+          if [ -z "$IMAGES" ]; then
+            PAGE=$(curl -s "https://ibb.co/album/$ALBUM_ID")
+            IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u)
+          fi
           
           # Считаем количество картинок
           IMAGE_COUNT=$(echo "$IMAGES" | wc -l | tr -d ' ')
-          echo "Найдено $IMAGE_COUNT валидных картинок"
+          echo "Найдено $IMAGE_COUNT картинок"
           
           if [ "$IMAGE_COUNT" -eq 0 ]; then
             echo "Не удалось получить картинки из альбома"
