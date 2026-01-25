@@ -28,27 +28,27 @@ jobs:
           # Парсим альбом и получаем список картинок
           echo "Получаем список картинок из альбома..."
           
-          # Парсим HTML альбома с пагинацией, чтобы получить полный список
-          IMAGES=""
+          # Парсим HTML альбома с пагинацией и собираем ссылки на просмотр
+          VIEWS=""
           PAGE_NUM=1
           MAX_PAGES=50
           while [ "$PAGE_NUM" -le "$MAX_PAGES" ]; do
             PAGE=$(curl -s "https://ibb.co/album/$ALBUM_ID?page=$PAGE_NUM")
-            PAGE_IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u)
-            PAGE_COUNT=$(echo "$PAGE_IMAGES" | sed '/^$/d' | wc -l | tr -d ' ')
+            PAGE_VIEWS=$(echo "$PAGE" | grep -oP 'https://ibb\.co/[^"]+' | grep -v '/album/' | sort -u)
+            PAGE_COUNT=$(echo "$PAGE_VIEWS" | sed '/^$/d' | wc -l | tr -d ' ')
             if [ "$PAGE_COUNT" -eq 0 ]; then
               break
             fi
-            IMAGES="${IMAGES}${PAGE_IMAGES}"$'\n'
+            VIEWS="${VIEWS}${PAGE_VIEWS}"$'\n'
             PAGE_NUM=$((PAGE_NUM + 1))
           done
-          IMAGES=$(echo "$IMAGES" | sed '/^$/d' | sort -u)
+          VIEWS=$(echo "$VIEWS" | sed '/^$/d' | sort -u)
           
-          # Считаем количество картинок
-          IMAGE_COUNT=$(echo "$IMAGES" | wc -l | tr -d ' ')
-          echo "Найдено $IMAGE_COUNT картинок"
+          # Считаем количество ссылок на просмотр
+          VIEW_COUNT=$(echo "$VIEWS" | wc -l | tr -d ' ')
+          echo "Найдено $VIEW_COUNT ссылок на просмотр"
           
-          if [ "$IMAGE_COUNT" -eq 0 ]; then
+          if [ "$VIEW_COUNT" -eq 0 ]; then
             echo "Не удалось получить картинки из альбома"
             exit 1
           fi
@@ -73,14 +73,16 @@ jobs:
             return 0
           }
           
-          # Выбираем рандомную картинку (с ограничением попыток)
+          # Выбираем рандомную ссылку на просмотр и вытаскиваем прямую ссылку на картинку
           NEW_IMAGE=""
           ATTEMPTS=0
           MAX_ATTEMPTS=5
           while [ "$ATTEMPTS" -lt "$MAX_ATTEMPTS" ]; do
-            RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
-            CANDIDATE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
-            if is_valid_image "$CANDIDATE"; then
+            RANDOM_LINE=$((RANDOM % VIEW_COUNT + 1))
+            VIEW_URL=$(echo "$VIEWS" | sed -n "${RANDOM_LINE}p")
+            VIEW_PAGE=$(curl -s "$VIEW_URL")
+            CANDIDATE=$(echo "$VIEW_PAGE" | grep -oP '<meta property="og:image" content="\K[^"]+')
+            if [ -n "$CANDIDATE" ] && is_valid_image "$CANDIDATE"; then
               NEW_IMAGE="$CANDIDATE"
               break
             fi
@@ -103,7 +105,7 @@ jobs:
           echo "Текущая картинка: $CURRENT_IMAGE"
           
           # Если новая картинка такая же как текущая, выбираем другую
-          if [ "$NEW_IMAGE" == "$CURRENT_IMAGE" ] && [ "$IMAGE_COUNT" -gt 1 ]; then
+          if [ "$NEW_IMAGE" == "$CURRENT_IMAGE" ] && [ "$VIEW_COUNT" -gt 1 ]; then
             echo "Выбрана та же картинка, выбираем другую..."
             RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
             NEW_IMAGE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
