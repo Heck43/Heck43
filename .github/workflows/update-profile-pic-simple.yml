@@ -34,7 +34,9 @@ jobs:
           MAX_PAGES=50
           while [ "$PAGE_NUM" -le "$MAX_PAGES" ]; do
             PAGE=$(curl -s "https://ibb.co/album/$ALBUM_ID?page=$PAGE_NUM")
-            PAGE_VIEWS=$(echo "$PAGE" | grep -oP 'https://ibb\.co/[^"]+' | grep -v '/album/' | sort -u)
+            PAGE_VIEWS_ABS=$(echo "$PAGE" | grep -oP 'https://ibb\.co/[^"]+' | grep -v '/album/' || true)
+            PAGE_VIEWS_REL=$(echo "$PAGE" | grep -oP 'href="/[A-Za-z0-9]+"' | sed 's/href="\(.*\)"/\1/' | grep -v '^/album/' || true)
+            PAGE_VIEWS=$(printf "%s\n%s\n" "$PAGE_VIEWS_ABS" "$PAGE_VIEWS_REL" | sed 's|^/|https://ibb.co/|' | sed '/^$/d' | sort -u)
             PAGE_COUNT=$(echo "$PAGE_VIEWS" | sed '/^$/d' | wc -l | tr -d ' ')
             if [ "$PAGE_COUNT" -eq 0 ]; then
               break
