@@ -39,7 +39,7 @@ jobs:
             local url="$1"
             local headers status ctype clen
             headers=$(curl -sIL -A "Mozilla/5.0" "$url" | tr -d '\r')
-            status=$(echo "$headers" | awk 'tolower($0) ~ /^http\\// {code=$2} END{print code}')
+            status=$(echo "$headers" | awk 'tolower($0) ~ /^http/ {code=$2} END{print code}')
             ctype=$(echo "$headers" | awk -F': ' 'tolower($1)=="content-type" {print tolower($2); exit}')
             clen=$(echo "$headers" | awk -F': ' 'tolower($1)=="content-length" {print $2; exit}')
             if [ "$status" != "200" ]; then
