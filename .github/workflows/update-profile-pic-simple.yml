@@ -43,15 +43,17 @@ jobs:
               break
             fi
             VIEWS="${VIEWS}${PAGE_VIEWS}"$'\n'
-            NEXT_URL=$(echo "$PAGE" | grep -oP 'data-pagination="next" href="\\K[^"]+' || true)
+            NEXT_URL=$(echo "$PAGE" | grep -oP 'data-pagination="next"[^>]*href="\\K[^"]+' || true)
             if [ -z "$NEXT_URL" ]; then
               break
             fi
+            NEXT_URL=$(echo "$NEXT_URL" | sed 's/&amp;/\\&/g')
             case "$NEXT_URL" in
               http*) ;;
               /*) NEXT_URL="https://ibb.co$NEXT_URL" ;;
               *) NEXT_URL="https://ibb.co/$NEXT_URL" ;;
             esac
+            echo "Страница $PAGE_NUM: найдено $PAGE_COUNT, next=$NEXT_URL"
             CURRENT_URL="$NEXT_URL"
             PAGE_NUM=$((PAGE_NUM + 1))
           done
