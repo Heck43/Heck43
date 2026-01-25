@@ -101,7 +101,7 @@ jobs:
             RANDOM_LINE=$((RANDOM % VIEW_COUNT + 1))
             VIEW_URL=$(echo "$VIEWS" | sed -n "${RANDOM_LINE}p")
             VIEW_PAGE=$(curl -sL -A "Mozilla/5.0" "$VIEW_URL")
-            CANDIDATE=$(echo "$VIEW_PAGE" | grep -oP '<meta property="og:image" content="\K[^"]+')
+            CANDIDATE=$(echo "$VIEW_PAGE" | grep -oP '<meta property="og:image" content="\K[^"]+' || true)
             if [ -n "$CANDIDATE" ] && is_valid_image "$CANDIDATE"; then
               NEW_IMAGE="$CANDIDATE"
               break
@@ -130,7 +130,7 @@ jobs:
             RANDOM_LINE=$((RANDOM % VIEW_COUNT + 1))
             VIEW_URL=$(echo "$VIEWS" | sed -n "${RANDOM_LINE}p")
             VIEW_PAGE=$(curl -sL -A "Mozilla/5.0" "$VIEW_URL")
-            NEW_IMAGE=$(echo "$VIEW_PAGE" | grep -oP '<meta property="og:image" content="\\K[^"]+')
+            NEW_IMAGE=$(echo "$VIEW_PAGE" | grep -oP '<meta property="og:image" content="\\K[^"]+' || true)
             echo "Новая картинка: $NEW_IMAGE"
           fi
           
