@@ -4,7 +4,7 @@
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&duration=3000&pause=1000&color=FF69B4&center=true&vCenter=true&width=600&lines=like+furry+:3;game_coding+;pizdec+;zx+%5Ew%5E;17+yo+developer+🦊;Кострома+🇷🇺)](https://git.io/typing-svg)
 
-<img src="https://i.ibb.co/qY6WnVWg/1947058408.webp?v=1769353450" width="350" alt="Profile Picture" style="border-radius: 50%; border: 5px solid #FF69B4;"/>
+<img src="https://i.ibb.co/KcfBhzxJ/1278617935.gif?v=1769355119" width="350" alt="Profile Picture" style="border-radius: 50%; border: 5px solid #FF69B4;"/>
 
 </div>
 
