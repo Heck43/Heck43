@@ -45,6 +45,14 @@ jobs:
             VIEWS="${VIEWS}${PAGE_VIEWS}"$'\n'
             NEXT_URL=$(echo "$PAGE" | grep -oP 'data-pagination="next"[^>]*href="\\K[^"]+' || true)
             if [ -z "$NEXT_URL" ]; then
+              SEEK=$(echo "$PAGE" | grep -oP 'data-action="load-more"[^>]*data-seek="\\K[^"]+' | head -n 1 || true)
+              if [ -n "$SEEK" ]; then
+                NEXT_PAGE=$((PAGE_NUM + 1))
+                NEXT_URL="https://ibb.co/album/$ALBUM_ID?page=$NEXT_PAGE&seek=$SEEK"
+              fi
+            fi
+            if [ -z "$NEXT_URL" ]; then
+              echo "Страница $PAGE_NUM: найдено $PAGE_COUNT, next=нет"
               break
             fi
             NEXT_URL=$(echo "$NEXT_URL" | sed 's/&amp;/\\&/g')
