@@ -28,12 +28,13 @@ jobs:
           # Парсим альбом и получаем список картинок
           echo "Получаем список картинок из альбома..."
           
-          # Парсим HTML альбома с пагинацией и собираем ссылки на просмотр
+          # Парсим HTML альбома с пагинацией (next/seek) и собираем ссылки на просмотр
           VIEWS=""
+          CURRENT_URL="https://ibb.co/album/$ALBUM_ID?page=1"
           PAGE_NUM=1
           MAX_PAGES=50
           while [ "$PAGE_NUM" -le "$MAX_PAGES" ]; do
-            PAGE=$(curl -s "https://ibb.co/album/$ALBUM_ID?page=$PAGE_NUM")
+            PAGE=$(curl -s "$CURRENT_URL")
             PAGE_VIEWS_ABS=$(echo "$PAGE" | grep -oP 'https://ibb\.co/[^"]+' | grep -v '/album/' || true)
             PAGE_VIEWS_REL=$(echo "$PAGE" | grep -oP 'href="/[A-Za-z0-9]+"' | sed 's/href="\(.*\)"/\1/' | grep -v '^/album/' || true)
             PAGE_VIEWS=$(printf "%s\n%s\n" "$PAGE_VIEWS_ABS" "$PAGE_VIEWS_REL" | sed 's|^/|https://ibb.co/|' | sed '/^$/d' | sort -u)
@@ -42,6 +43,11 @@ jobs:
               break
             fi
             VIEWS="${VIEWS}${PAGE_VIEWS}"$'\n'
+            NEXT_URL=$(echo "$PAGE" | grep -oP 'data-pagination="next" href="\\K[^"]+')
+            if [ -z "$NEXT_URL" ]; then
+              break
+            fi
+            CURRENT_URL="$NEXT_URL"
             PAGE_NUM=$((PAGE_NUM + 1))
           done
           VIEWS=$(echo "$VIEWS" | sed '/^$/d' | sort -u)
@@ -109,8 +115,10 @@ jobs:
           # Если новая картинка такая же как текущая, выбираем другую
           if [ "$NEW_IMAGE" == "$CURRENT_IMAGE" ] && [ "$VIEW_COUNT" -gt 1 ]; then
             echo "Выбрана та же картинка, выбираем другую..."
-            RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
-            NEW_IMAGE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
+            RANDOM_LINE=$((RANDOM % VIEW_COUNT + 1))
+            VIEW_URL=$(echo "$VIEWS" | sed -n "${RANDOM_LINE}p")
+            VIEW_PAGE=$(curl -s "$VIEW_URL")
+            NEW_IMAGE=$(echo "$VIEW_PAGE" | grep -oP '<meta property="og:image" content="\\K[^"]+')
             echo "Новая картинка: $NEW_IMAGE"
           fi
           
