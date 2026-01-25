@@ -34,7 +34,7 @@ jobs:
           PAGE_NUM=1
           MAX_PAGES=50
           while [ "$PAGE_NUM" -le "$MAX_PAGES" ]; do
-            PAGE=$(curl -s "$CURRENT_URL")
+            PAGE=$(curl -sL -A "Mozilla/5.0" "$CURRENT_URL")
             PAGE_VIEWS_ABS=$(echo "$PAGE" | grep -oP 'https://ibb\.co/[^"]+' | grep -v '/album/' || true)
             PAGE_VIEWS_REL=$(echo "$PAGE" | grep -oP 'href="/[A-Za-z0-9]+"' | sed 's/href="\(.*\)"/\1/' | grep -v '^/album/' || true)
             PAGE_VIEWS=$(printf "%s\n%s\n" "$PAGE_VIEWS_ABS" "$PAGE_VIEWS_REL" | sed 's|^/|https://ibb.co/|' | sed '/^$/d' | sort -u)
@@ -47,6 +47,11 @@ jobs:
             if [ -z "$NEXT_URL" ]; then
               break
             fi
+            case "$NEXT_URL" in
+              http*) ;;
+              /*) NEXT_URL="https://ibb.co$NEXT_URL" ;;
+              *) NEXT_URL="https://ibb.co/$NEXT_URL" ;;
+            esac
             CURRENT_URL="$NEXT_URL"
             PAGE_NUM=$((PAGE_NUM + 1))
           done
@@ -88,7 +93,7 @@ jobs:
           while [ "$ATTEMPTS" -lt "$MAX_ATTEMPTS" ]; do
             RANDOM_LINE=$((RANDOM % VIEW_COUNT + 1))
             VIEW_URL=$(echo "$VIEWS" | sed -n "${RANDOM_LINE}p")
-            VIEW_PAGE=$(curl -s "$VIEW_URL")
+            VIEW_PAGE=$(curl -sL -A "Mozilla/5.0" "$VIEW_URL")
             CANDIDATE=$(echo "$VIEW_PAGE" | grep -oP '<meta property="og:image" content="\K[^"]+')
             if [ -n "$CANDIDATE" ] && is_valid_image "$CANDIDATE"; then
               NEW_IMAGE="$CANDIDATE"
@@ -117,7 +122,7 @@ jobs:
             echo "Выбрана та же картинка, выбираем другую..."
             RANDOM_LINE=$((RANDOM % VIEW_COUNT + 1))
             VIEW_URL=$(echo "$VIEWS" | sed -n "${RANDOM_LINE}p")
-            VIEW_PAGE=$(curl -s "$VIEW_URL")
+            VIEW_PAGE=$(curl -sL -A "Mozilla/5.0" "$VIEW_URL")
             NEW_IMAGE=$(echo "$VIEW_PAGE" | grep -oP '<meta property="og:image" content="\\K[^"]+')
             echo "Новая картинка: $NEW_IMAGE"
           fi
