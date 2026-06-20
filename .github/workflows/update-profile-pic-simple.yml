@@ -32,16 +32,18 @@ jobs:
           PAGE=$(curl -s "https://ibb.co/album/$ALBUM_ID")
           
           # Извлекаем все ссылки на картинки (ищем паттерн i.ibb.co)
-          IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u)
+          # оййй, фильтруем картиночки из альбома, чтобы всё было красивенько~~
+          IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u || true)
+          
+          # проверяем, нашлось ли хоть что-то, ня~~
+          if [ -z "$IMAGES" ]; then
+            echo "Не удалось получить картинки из альбома"
+            exit 1
+          fi
           
           # Считаем количество картинок
           IMAGE_COUNT=$(echo "$IMAGES" | wc -l)
           echo "Найдено $IMAGE_COUNT картинок"
-          
-          if [ "$IMAGE_COUNT" -eq 0 ]; then
-            echo "Не удалось получить картинки из альбома"
-            exit 1
-          fi
           
           # Выбираем рандомную картинку
           RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
@@ -50,7 +52,8 @@ jobs:
           echo "Выбрана картинка: $NEW_IMAGE"
           
           # Сохраняем текущую картинку из README
-          CURRENT_IMAGE=$(grep -oP '<img src="\K[^"]+(?=" width="350")' README.md)
+          # мррр, тут если картинка пустая, grep не упадет благодаря || true, ушки дрожат от радости~~
+          CURRENT_IMAGE=$(grep -oP '<img src="\K[^"]*(?=" width="350")' README.md || true)
           echo "Текущая картинка: $CURRENT_IMAGE"
           
           # Если новая картинка такая же как текущая, выбираем другую
