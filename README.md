@@ -26,7 +26,7 @@
 Имя: Heck43
 Возраст: 18 лет :3
 Локация: Кострома, Россия 🇷🇺
-Статус: Student @ Top Academy (2 курс)
+Статус: Student @ Top Academy (3 курс)
 Цель: Развитие в IT сфере
 Интересы: Coding + Gaming + Furry
 ```
