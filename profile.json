@@ -95,7 +95,7 @@
     "title": "Стек и инструменты",
     "groups": [
       {
-        "title": "Языки программирования",
+        "title": "Основное",
         "items": [
           {
             "icon": "brand:python",
@@ -108,7 +108,12 @@
           {
             "icon": "brand:cplusplus",
             "label": "C++"
-          },
+          }
+        ]
+      },
+      {
+        "title": "Ещё языки",
+        "items": [
           {
             "icon": "brand:javascript",
             "label": "JavaScript"
