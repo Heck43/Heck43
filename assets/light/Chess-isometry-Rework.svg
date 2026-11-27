@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="118" viewBox="0 0 420 118">
+  <rect x="0.5" y="0.5" width="419" height="117" rx="14" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+  <rect x="18" y="18" width="32" height="32" rx="9" fill="#eaeef2"/>
+  <g transform="translate(26, 26)" fill="none" stroke="#1f2328" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" color="#1f2328">
+    <path d="M8 1.8L13.5 5v6L8 14.2 2.5 11V5L8 1.8Z"/><path d="M8 8.2L13.5 5M8 8.2L2.5 5M8 8.2v6"/>
+  </g>
+  <text x="62" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">Chess-isometry-Rework</text>
+  <text x="62" y="49" font-family="ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#8c959f">Heck43/Chess-isometry-Rework</text>
+  <text x="18" y="77" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12.5" fill="#656d76">Переделка изометрических шахмат друга</text>
+  <circle cx="23" cy="98" r="4" fill="#3572a5"/>
+  <text x="33" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="12" fill="#656d76">Python</text>
+  <path d="M393 102 L401 94 M395 94 H401 V100" fill="none" stroke="#8c959f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
