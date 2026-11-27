@@ -90,8 +90,14 @@ if __name__ == "__main__":
     b64 = "data:image/png;base64," + base64.b64encode(raw).decode("ascii")
     for p in ("assets/stack-dark.svg", "assets/stack-light.svg"):
         inject_into_svg(p, b64)
-    if os.path.exists(".profile/avatar.png"):
-        av_b64 = "data:image/png;base64," + base64.b64encode(open(".profile/avatar.png", "rb").read()).decode("ascii")
+    av_bytes = None
+    try:
+        av_bytes = download_bytes(FALLBACK_URL)
+    except Exception:
+        if os.path.exists(".profile/avatar.png"):
+            av_bytes = open(".profile/avatar.png", "rb").read()
+    if av_bytes:
+        av_b64 = "data:image/png;base64," + base64.b64encode(av_bytes).decode("ascii")
         for hp in ("assets/hero-dark.svg", "assets/hero-light.svg"):
             if os.path.exists(hp):
                 hs = open(hp, "r", encoding="utf-8").read()
