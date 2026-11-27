@@ -1,29 +1,29 @@
 {
   "version": 1,
   "login": "Heck43",
-  "seed": "#9EF4FF",
+  "seed": "#7C4DFF",
   "seedFromAvatar": false,
-  "scheme": "tonalSpot",
+  "scheme": "expressive",
   "motion": true,
-  "iconFill": true,
+  "iconFill": false,
   "order": [
     "hero",
-    "socials",
-    "about",
-    "stack",
     "projects",
+    "wave",
+    "stack",
+    "about",
     "stats",
     "streak",
-    "wave",
+    "socials",
     "buttons"
   ],
   "hidden": [],
   "hero": {
-    "greeting": "Привет, я",
+    "greeting": "whoami //",
     "name": "heck43 :3",
     "subtitle": "18 y.o. dev · Кострома · Top Academy (3 курс)\nМоды под Telegram, игры, MCP и пет-проекты",
     "typing": true,
-    "avatarShape": "cookie12",
+    "avatarShape": "gem",
     "chips": [
       {
         "icon": "brand:python",
@@ -34,37 +34,61 @@
         "label": "C# / C++"
       },
       {
-        "icon": "brand:javascript",
-        "label": "JS & Luau"
+        "icon": "brand:lua",
+        "label": "Luau & JS"
       }
     ]
   },
-  "about": {
-    "title": "Обо мне",
-    "items": [
-      {
-        "icon": "person",
-        "label": "18 лет · Кострома, Россия"
+  "projects": {
+    "source": "manual",
+    "repos": [
+      "pawgram",
+      "Pawgram-Android",
+      "furry-quest",
+      "mcp-arma3",
+      "plushlair-mobile",
+      "Chess-isometry-Rework"
+    ],
+    "overrides": {
+      "pawgram": {
+        "icon": "send",
+        "shape": "gem",
+        "text": "Кастомный Telegram Desktop: моды, чистые URL и безлимитные стикеры"
       },
-      {
-        "icon": "school",
-        "label": "Student @ Top Academy (3 курс)"
+      "Pawgram-Android": {
+        "icon": "smartphone",
+        "shape": "soft",
+        "text": "Модифицированный Telegram-клиент под Android"
       },
-      {
+      "furry-quest": {
         "icon": "sports_esports",
-        "label": "Minecraft · Postal 2 · ATLYSS · Roblox"
+        "shape": "sunny",
+        "text": "Экшен-рогалик на JavaScript"
       },
-      {
-        "icon": "desktop_windows",
-        "label": "i5-8300H · GTX 1050 2GB · 16GB RAM · Win 10 LTSC"
+      "mcp-arma3": {
+        "icon": "memory",
+        "shape": "clover",
+        "text": "MCP-сервер для интеграции ИИ с Arma 3"
+      },
+      "plushlair-mobile": {
+        "icon": "shopping_bag",
+        "shape": "flower",
+        "text": "Мобильное приложение магазина Plushlair"
+      },
+      "Chess-isometry-Rework": {
+        "icon": "extension",
+        "shape": "pill",
+        "text": "Переделка и улучшение изометрических шахмат"
       }
-    ]
+    },
+    "empty": "Без описания.",
+    "fork": "Fork"
   },
   "stack": {
-    "title": "Стек",
+    "title": "Стек и инструменты",
     "groups": [
       {
-        "title": "Основное",
+        "title": "Языки",
         "items": [
           {
             "icon": "brand:python",
@@ -72,29 +96,33 @@
           },
           {
             "icon": "brand:cplusplus",
-            "label": "C# / C++"
+            "label": "C++ / C#"
           },
           {
             "icon": "brand:javascript",
             "label": "JavaScript"
-          }
-        ]
-      },
-      {
-        "title": "Ещё",
-        "items": [
+          },
           {
             "icon": "brand:lua",
             "label": "Luau / Lua"
-          },
-          {
-            "icon": "brand:android",
-            "label": "Java (Android)"
           }
         ]
       },
       {
-        "title": "Инструменты",
+        "title": "Платформы",
+        "items": [
+          {
+            "icon": "brand:android",
+            "label": "Android (Java)"
+          },
+          {
+            "icon": "brand:roblox",
+            "label": "Roblox"
+          }
+        ]
+      },
+      {
+        "title": "Workflow",
         "items": [
           {
             "icon": "brand:git",
@@ -108,19 +136,26 @@
       }
     ]
   },
-  "projects": {
-    "source": "pinned",
-    "repos": [
-      "pawgram",
-      "Pawgram-Android",
-      "furry-quest",
-      "mcp-arma3",
-      "plushlair-mobile",
-      "Chess-isometry-Rework"
-    ],
-    "overrides": {},
-    "empty": "Без описания.",
-    "fork": "Fork"
+  "about": {
+    "title": "Досье",
+    "items": [
+      {
+        "icon": "person",
+        "label": "18 лет · Кострома, Россия"
+      },
+      {
+        "icon": "school",
+        "label": "Top Academy · 3 курс"
+      },
+      {
+        "icon": "sports_esports",
+        "label": "Minecraft · Postal 2 · ATLYSS · Roblox"
+      },
+      {
+        "icon": "desktop_windows",
+        "label": "i5-8300H · GTX 1050 2GB · 16GB RAM · Win 10 LTSC"
+      }
+    ]
   },
   "stats": {
     "title": "Активность на GitHub",
@@ -154,11 +189,13 @@
         "url": "https://discord.gg/BMTCDDbpFh"
       }
     ],
-    "variant": "chip",
-    "fill": "tonal",
-    "card": true
+    "variant": "icon",
+    "fill": "filled",
+    "shape": "flower",
+    "card": false
   },
   "buttons": {
+    "card": true,
     "items": [
       {
         "icon": "language",
