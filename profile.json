@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "login": "Heck43",
+  "seed": "#9EF4FF",
+  "seedFromAvatar": false,
+  "scheme": "tonalSpot",
+  "motion": true,
+  "iconFill": true,
+  "order": [
+    "hero",
+    "socials",
+    "about",
+    "stack",
+    "projects",
+    "stats",
+    "streak",
+    "wave",
+    "buttons"
+  ],
+  "hidden": [],
+  "hero": {
+    "greeting": "Привет, я",
+    "name": "heck43 :3",
+    "subtitle": "18 y.o. dev · Кострома · Top Academy (3 курс)\nМоды под Telegram, игры, MCP и пет-проекты",
+    "typing": true,
+    "avatarShape": "cookie12",
+    "chips": [
+      {
+        "icon": "brand:python",
+        "label": "Python"
+      },
+      {
+        "icon": "brand:cplusplus",
+        "label": "C# / C++"
+      },
+      {
+        "icon": "brand:javascript",
+        "label": "JS & Luau"
+      }
+    ]
+  },
+  "about": {
+    "title": "Обо мне",
+    "items": [
+      {
+        "icon": "person",
+        "label": "18 лет · Кострома, Россия"
+      },
+      {
+        "icon": "school",
+        "label": "Student @ Top Academy (3 курс)"
+      },
+      {
+        "icon": "sports_esports",
+        "label": "Minecraft · Postal 2 · ATLYSS · Roblox"
+      },
+      {
+        "icon": "desktop_windows",
+        "label": "i5-8300H · GTX 1050 2GB · 16GB RAM · Win 10 LTSC"
+      }
+    ]
+  },
+  "stack": {
+    "title": "Стек",
+    "groups": [
+      {
+        "title": "Основное",
+        "items": [
+          {
+            "icon": "brand:python",
+            "label": "Python"
+          },
+          {
+            "icon": "brand:cplusplus",
+            "label": "C# / C++"
+          },
+          {
+            "icon": "brand:javascript",
+            "label": "JavaScript"
+          }
+        ]
+      },
+      {
+        "title": "Ещё",
+        "items": [
+          {
+            "icon": "brand:lua",
+            "label": "Luau / Lua"
+          },
+          {
+            "icon": "brand:android",
+            "label": "Java (Android)"
+          }
+        ]
+      },
+      {
+        "title": "Инструменты",
+        "items": [
+          {
+            "icon": "brand:git",
+            "label": "Git"
+          },
+          {
+            "icon": "brand:githubactions",
+            "label": "GitHub Actions"
+          }
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "source": "pinned",
+    "repos": [
+      "pawgram",
+      "Pawgram-Android",
+      "furry-quest",
+      "mcp-arma3",
+      "plushlair-mobile",
+      "Chess-isometry-Rework"
+    ],
+    "overrides": {},
+    "empty": "Без описания.",
+    "fork": "Fork"
+  },
+  "stats": {
+    "title": "Активность на GitHub",
+    "stars": "Звёзды",
+    "contributions": "Коммиты за год",
+    "repos": "Репозитории",
+    "followers": "Подписчики",
+    "calendar": "Последние 21 день",
+    "weekdays": "ПВСЧПСВ",
+    "languages": "Языки в репозиториях",
+    "showLanguages": true
+  },
+  "streak": {
+    "title": "Стрик",
+    "current": "Текущий стрик",
+    "longest": "Рекорд за год",
+    "days": "дн."
+  },
+  "socials": {
+    "items": [
+      {
+        "icon": "brand:telegram",
+        "url": "https://t.me/Heck1337"
+      },
+      {
+        "icon": "brand:steam",
+        "url": "https://steamcommunity.com/id/heck1337/"
+      },
+      {
+        "icon": "brand:discord",
+        "url": "https://discord.gg/BMTCDDbpFh"
+      }
+    ],
+    "variant": "chip",
+    "fill": "tonal",
+    "card": true
+  },
+  "buttons": {
+    "items": [
+      {
+        "icon": "language",
+        "label": "heck43.github.io",
+        "url": "https://heck43.github.io",
+        "style": "filled"
+      },
+      {
+        "icon": "book_2",
+        "label": "Все репозитории",
+        "url": "https://github.com/Heck43?tab=repositories",
+        "style": "tonal"
+      }
+    ]
+  }
+}
