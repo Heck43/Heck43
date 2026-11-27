@@ -90,9 +90,4 @@ if __name__ == "__main__":
     b64 = "data:image/png;base64," + base64.b64encode(raw).decode("ascii")
     for p in ("assets/stack-dark.svg", "assets/stack-light.svg"):
         inject_into_svg(p, b64)
-    for hp in ("assets/hero-dark.svg", "assets/hero-light.svg"):
-        if os.path.exists(hp):
-            hs = open(hp, "r", encoding="utf-8").read()
-            hs = re.sub(r'<path d="[^"]+" fill="[^"]+" opacity="\.9"/>(?=<clipPath id="ava">)', "", hs)
-            open(hp, "w", encoding="utf-8").write(hs)
-    print("Injected daily-pic into stack SVGs & cleaned avatar halo")
+    print("Injected daily-pic into stack SVGs")
