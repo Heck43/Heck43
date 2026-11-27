@@ -66,10 +66,10 @@ def inject_into_svg(svg_path, b64_uri):
     W = float(m.group(1))
     H = float(m.group(2))
 
-    size = min(376.0, H - 44.0)
-    x = W - 52.0 - size
+    size = min(332.0, H - 96.0)
+    x = W - 48.0 - size
     y = (H - size) / 2.0
-    r = 28.0
+    r = 26.0
 
     cid = "dpClip_" + ("d" if "dark" in svg_path else "l")
     block = (
