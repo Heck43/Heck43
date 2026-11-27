@@ -1,26 +1,23 @@
 <div align="center">
 
-<img src="assets/hero.svg" width="100%" alt="heck43" />
+<img src="assets/hero.svg" width="100%" alt="heck43 :3" />
 
-<a href="https://heck43.github.io"><img src="https://img.shields.io/badge/SITE-heck43.github.io-0b0b0c?style=flat-square&labelColor=ff3b30" /></a>
-<a href="https://t.me/Heck1337"><img src="https://img.shields.io/badge/TELEGRAM-@Heck1337-0b0b0c?style=flat-square&labelColor=ff3b30" /></a>
-<a href="https://discord.gg/BMTCDDbpFh"><img src="https://img.shields.io/badge/DISCORD-join-0b0b0c?style=flat-square&labelColor=ff3b30" /></a>
-<a href="mailto:lolnektyr@gmail.com"><img src="https://img.shields.io/badge/MAIL-lolnektyr@gmail.com-0b0b0c?style=flat-square&labelColor=ff3b30" /></a>
+<br/>
+
+<img src="https://heck43.github.io/media/boykisser-dance.gif" width="32" alt=":3" /> &nbsp;
+<a href="https://heck43.github.io"><img src="https://img.shields.io/badge/heck43.github.io-0d0d12?style=for-the-badge&logo=githubpages&logoColor=9ef4ff" /></a>
+<a href="https://t.me/Heck1337"><img src="https://img.shields.io/badge/Telegram-@Heck1337-0d0d12?style=for-the-badge&logo=telegram&logoColor=9ef4ff" /></a>
+<a href="https://steamcommunity.com/id/heck1337/"><img src="https://img.shields.io/badge/Steam-@heck1337-0d0d12?style=for-the-badge&logo=steam&logoColor=9ef4ff" /></a>
+<a href="https://discord.gg/BMTCDDbpFh"><img src="https://img.shields.io/badge/Discord-heck43-0d0d12?style=for-the-badge&logo=discord&logoColor=9ef4ff" /></a>
+<a href="mailto:lolnektyr@gmail.com"><img src="https://img.shields.io/badge/Email-mail-0d0d12?style=for-the-badge&logo=gmail&logoColor=9ef4ff" /></a>
 
 <br/><br/>
 
-<a href="https://github.com/Heck43/pawgram"><img src="assets/row0.svg" width="100%" alt="pawgram"/></a>
-<br/>
-<a href="https://github.com/Heck43/Pawgram-Android"><img src="assets/row1.svg" width="100%" alt="Pawgram-Android"/></a>
-<br/>
-<a href="https://github.com/Heck43/furry-quest"><img src="assets/row2.svg" width="100%" alt="furry-quest"/></a>
-<br/>
-<a href="https://github.com/Heck43/mcp-arma3"><img src="assets/row3.svg" width="100%" alt="mcp-arma3"/></a>
-<br/>
-<a href="https://github.com/Heck43/plushlair-mobile"><img src="assets/row4.svg" width="100%" alt="plushlair-mobile"/></a>
-<br/>
-<a href="https://github.com/Heck43/Chess-isometry-Rework"><img src="assets/row5.svg" width="100%" alt="Chess-isometry-Rework"/></a>
-<br/>
+<img src="assets/bento.svg" width="100%" alt="bento" />
+
+<br/><br/>
+
+<p><a href="https://github.com/Heck43/pawgram"><img src="assets/proj0.svg" width="49%" alt="pawgram" /></a> <a href="https://github.com/Heck43/Pawgram-Android"><img src="assets/proj1.svg" width="49%" alt="Pawgram-Android" /></a><br/><a href="https://github.com/Heck43/furry-quest"><img src="assets/proj2.svg" width="49%" alt="furry-quest" /></a> <a href="https://github.com/Heck43/mcp-arma3"><img src="assets/proj3.svg" width="49%" alt="mcp-arma3" /></a><br/><a href="https://github.com/Heck43/plushlair-mobile"><img src="assets/proj4.svg" width="49%" alt="plushlair-mobile" /></a> <a href="https://github.com/Heck43/Chess-isometry-Rework"><img src="assets/proj5.svg" width="49%" alt="Chess-isometry-Rework" /></a></p>
 
 <br/>
 
