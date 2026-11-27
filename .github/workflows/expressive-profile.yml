@@ -8,6 +8,7 @@ on:
     paths:
       - profile.json
       - .profile/icons.json
+      - .profile/avatar.png
       - .profile/inject_stack_pic.py
       - .github/workflows/expressive-profile.yml
 
