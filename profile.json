@@ -1,9 +1,9 @@
 {
   "version": 1,
   "login": "Heck43",
-  "seed": "#2563EB",
+  "seed": "#E11D48",
   "seedFromAvatar": false,
-  "scheme": "vibrant",
+  "scheme": "fidelity",
   "motion": true,
   "iconFill": true,
   "order": [
@@ -12,19 +12,19 @@
     "projects",
     "stack",
     "stats",
+    "streak",
+    "wave",
     "buttons"
   ],
   "hidden": [
-    "wave",
-    "about",
-    "streak"
+    "about"
   ],
   "hero": {
-    "greeting": "",
-    "name": "heck43 :3",
-    "subtitle": "18 · Кострома · Top Academy (3 курс) · i5-8300H / GTX 1050\nМоды под Telegram, игры, MCP-сервера и пет-проекты",
-    "typing": false,
-    "avatarShape": "clover",
+    "greeting": "привет :3",
+    "name": "heck43",
+    "subtitle": "18 y.o. dev · Кострома · Top Academy :3\nпишу моды, игры и прикольные штуки",
+    "typing": true,
+    "avatarShape": "soft",
     "chips": [
       {
         "icon": "brand:python",
@@ -56,47 +56,46 @@
       }
     ],
     "variant": "chip",
-    "fill": "filled",
+    "fill": "tonal",
     "card": true
   },
   "projects": {
-    "source": "manual",
-    "repos": [
-      "pawgram",
-      "furry-quest",
-      "mcp-arma3",
-      "Chess-isometry-Rework"
-    ],
+    "source": "pinned",
+    "repos": [],
     "overrides": {
-      "pawgram": {
-        "icon": "brand:telegram",
-        "shape": "clover",
-        "text": "Кастомный Telegram Desktop: моды, чистые URL и стикеры"
+      "antigravity-web-studio": {
+        "icon": "deployed_code",
+        "shape": "soft"
       },
-      "furry-quest": {
-        "icon": "sports_esports",
-        "shape": "sunny",
-        "text": "Экшен-рогалик на JavaScript"
-      },
-      "mcp-arma3": {
-        "icon": "terminal",
-        "shape": "gem",
-        "text": "MCP-сервер для интеграции ИИ с Arma 3"
+      "cpp-journey": {
+        "icon": "brand:cplusplus",
+        "shape": "pill"
       },
       "Chess-isometry-Rework": {
         "icon": "brand:python",
-        "shape": "pill",
-        "text": "Переделка и улучшение изометрических шахмат"
+        "shape": "gem"
+      },
+      "aim_trainer_for_heck43": {
+        "icon": "sports_esports",
+        "shape": "sunny"
+      },
+      "Bouncing-Balls-Widget": {
+        "icon": "brand:python",
+        "shape": "flower"
+      },
+      "kjughegwoih": {
+        "icon": "music_note",
+        "shape": "clover"
       }
     },
     "empty": "Без описания.",
     "fork": "Fork"
   },
   "stack": {
-    "title": "Стек",
+    "title": "Стек и инструменты",
     "groups": [
       {
-        "title": "Языки",
+        "title": "Языки программирования",
         "items": [
           {
             "icon": "brand:python",
@@ -120,7 +119,20 @@
           },
           {
             "icon": "code",
-            "label": "Luau"
+            "label": "Luau / Lua"
+          }
+        ]
+      },
+      {
+        "title": "Веб и интерфейс",
+        "items": [
+          {
+            "icon": "brand:html5",
+            "label": "HTML5"
+          },
+          {
+            "icon": "brand:css",
+            "label": "CSS"
           }
         ]
       },
@@ -134,6 +146,10 @@
           {
             "icon": "brand:githubactions",
             "label": "GitHub Actions"
+          },
+          {
+            "icon": "terminal",
+            "label": "VS Code / VS"
           }
         ]
       }
@@ -144,20 +160,20 @@
     "items": []
   },
   "stats": {
-    "title": "Активность",
+    "title": "Активность на GitHub",
     "stars": "Звёзды",
-    "contributions": "Коммиты",
-    "repos": "Репо",
+    "contributions": "Коммиты за год",
+    "repos": "Репозитории",
     "followers": "Подписчики",
-    "calendar": "21 день",
+    "calendar": "Последние 21 день",
     "weekdays": "ПВСЧПСВ",
-    "languages": "Языки",
-    "showLanguages": false
+    "languages": "Языки в репозиториях",
+    "showLanguages": true
   },
   "streak": {
     "title": "Стрик",
-    "current": "Текущий",
-    "longest": "Рекорд",
+    "current": "Текущий стрик",
+    "longest": "Рекорд за год",
     "days": "дн."
   },
   "buttons": {

@@ -20,3 +20,30 @@ jobs:
       - uses: metawka/expressive-profile@v1
         with:
           token: ${{ secrets.PROFILE_TOKEN || github.token }}
+
+      - name: Place rounded daily photo beside Stack & add footer
+        run: |
+          python3 - <<'EOF'
+          p = "README.md"
+          s = open(p).read()
+          old_stack = '<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg"><img src="assets/stack-light.svg" width="100%" alt="Стек и инструменты"></picture>'
+          new_stack = (
+              '<table width="100%"><tr>'
+              '<td width="68%" valign="middle"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg"><img src="assets/stack-light.svg" width="100%" alt="Стек и инструменты"></picture></td>'
+              '<td width="32%" align="center" valign="middle"><img src="assets/daily-pic.png" width="100%" alt="daily pic :3" /></td>'
+              '</tr></table>'
+          )
+          if old_stack in s:
+              s = s.replace(old_stack, new_stack)
+          footer = '\n<p align="center"><img src="https://heck43.github.io/media/boykisser-dance.gif" width="36" alt=":3" /><br/><sub>обновляется каждый час · made with :3</sub></p>\n'
+          if 'boykisser-dance.gif' not in s:
+              s = s.replace('</div>', footer + '</div>')
+          open(p, "w").write(s)
+          EOF
+
+      - name: Commit layout tweak
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add README.md
+          git diff --cached --quiet || (git commit -m "Attach daily rounded photo beside stack" && git push)

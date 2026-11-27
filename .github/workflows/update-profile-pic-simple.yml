@@ -2,85 +2,58 @@ name: Update Profile Picture from ImgBB
 
 on:
   schedule:
-    - cron: "0 * * * *"  # Каждый час
+    - cron: "0 * * * *"
   workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/update-profile-pic-simple.yml
+
+permissions:
+  contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
-    # мррр, даем права на запись, чтобы пушить изменения~~
-    permissions:
-      contents: write
     steps:
-      - name: Checkout
-        # оййй, используем самую свежую версию чекаута, чтобы не ругалось~~
-        uses: actions/checkout@v4
-        
-      - name: Install dependencies
+      - uses: actions/checkout@v4
+
+      - name: Install Pillow
+        run: pip install pillow
+
+      - name: Fetch random image and round corners
         run: |
-          sudo apt-get update
-          sudo apt-get install -y jq curl
-        
-      - name: Get Random Image from ImgBB Album
-        run: |
-          # ImgBB API ключ
-          API_KEY="8210be0791dd4e570500e79ed8d8d54f"
-          
-          # ID альбома (из ссылки https://ibb.co/album/6R58df)
-          ALBUM_ID="6R58df"
-          
-          # Парсим страницу альбома и получаем список картинок
-          echo "Получаем список картинок из альбома..."
-          
-          # Скачиваем страницу альбома
-          PAGE=$(curl -s "https://ibb.co/album/$ALBUM_ID")
-          
-          # Извлекаем все ссылки на картинки (ищем паттерн i.ibb.co)
-          # оййй, фильтруем картиночки из альбома, чтобы всё было красивенько~~
-          IMAGES=$(echo "$PAGE" | grep -oP 'https://i\.ibb\.co/[^"]+\.(webp|png|jpg|gif)' | sort -u || true)
-          
-          # проверяем, нашлось ли хоть что-то, ня~~
-          if [ -z "$IMAGES" ]; then
-            echo "Не удалось получить картинки из альбома"
-            exit 1
-          fi
-          
-          # Считаем количество картинок
-          IMAGE_COUNT=$(echo "$IMAGES" | wc -l)
-          echo "Найдено $IMAGE_COUNT картинок"
-          
-          # Выбираем рандомную картинку
-          RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
-          NEW_IMAGE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
-          
-          echo "Выбрана картинка: $NEW_IMAGE"
-          
-          # Сохраняем текущую картинку из README
-          # мррр, тут если картинка пустая, grep не упадет благодаря || true, ушки дрожат от радости~~
-          CURRENT_IMAGE=$(grep -oP '<img src="\K[^"]*(?=" width="350")' README.md || true)
-          echo "Текущая картинка: $CURRENT_IMAGE"
-          
-          # Если новая картинка такая же как текущая, выбираем другую
-          if [ "$NEW_IMAGE" == "$CURRENT_IMAGE" ] && [ "$IMAGE_COUNT" -gt 1 ]; then
-            echo "Выбрана та же картинка, выбираем другую..."
-            RANDOM_LINE=$((RANDOM % IMAGE_COUNT + 1))
-            NEW_IMAGE=$(echo "$IMAGES" | sed -n "${RANDOM_LINE}p")
-            echo "Новая картинка: $NEW_IMAGE"
-          fi
-          
-          # Заменяем картинку в README (ищем любую картинку с width="350")
-          sed -i "s|<img src=\"[^\"]*\" width=\"350\"|<img src=\"$NEW_IMAGE\" width=\"350\"|g" README.md
-          
-          echo "Картинка обновлена!"
-          
+          python3 - <<'EOF'
+          import os, random, re, urllib.request
+          from PIL import Image, ImageDraw
+
+          page = urllib.request.urlopen("https://ibb.co/album/6R58df").read().decode("utf-8", "ignore")
+          imgs = sorted(set(re.findall(r'https://i\.ibb\.co/[^"]+\.(?:webp|png|jpg|gif)', page)))
+          assert imgs, "No images found in ImgBB album"
+          url = random.choice(imgs)
+          print("Selected:", url)
+
+          urllib.request.urlretrieve(url, "raw_pic")
+          im = Image.open("raw_pic").convert("RGBA")
+          # Square crop centered + resize to 500x500
+          m = min(im.size)
+          left = (im.width - m) // 2
+          top = (im.height - m) // 2
+          im = im.crop((left, top, left + m, top + m)).resize((500, 500), Image.Resampling.LANCZOS)
+
+          # Rounded corners mask (material-style radius 64)
+          mask = Image.new("L", (500, 500), 0)
+          draw = ImageDraw.Draw(mask)
+          draw.rounded_rectangle((0, 0, 499, 499), radius=64, fill=255)
+          im.putalpha(mask)
+
+          os.makedirs("assets", exist_ok=True)
+          im.save("assets/daily-pic.png", "PNG", optimize=True)
+          os.remove("raw_pic")
+          EOF
+
       - name: Commit and Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add README.md
-          if git diff --staged --quiet; then
-            echo "Нет изменений"
-          else
-            git commit -m "🎨 Обновлена картинка профиля"
-            git push
-          fi
+          git add assets/daily-pic.png
+          git diff --staged --quiet || (git commit -m "🎨 Обновлена картинка профиля" && git push)
