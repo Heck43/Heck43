@@ -1,30 +1,27 @@
 <div align="center">
 
-<img src="assets/hero.svg" width="100%" alt="heck43 :3" />
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.svg"><img src="assets/hero-light.svg" width="100%" alt="Привет, я heck43 :3"></picture>
 
-<br/>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-l-dark.svg"><img src="assets/social-l-light.svg" width="24.995%" alt=""></picture><a href="https://t.me/Heck1337"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-1-dark.svg"><img src="assets/social-1-light.svg" width="18.122%" alt="telegram"></picture></a><a href="https://steamcommunity.com/id/heck1337/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-2-dark.svg"><img src="assets/social-2-light.svg" width="15.335%" alt="steam"></picture></a><a href="https://discord.gg/BMTCDDbpFh"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-3-dark.svg"><img src="assets/social-3-light.svg" width="16.552%" alt="discord"></picture></a><picture><source media="(prefers-color-scheme: dark)" srcset="assets/social-r-dark.svg"><img src="assets/social-r-light.svg" width="24.995%" alt=""></picture>
 
-<img src="https://heck43.github.io/media/boykisser-dance.gif" width="32" alt=":3" /> &nbsp;
-<a href="https://heck43.github.io"><img src="https://img.shields.io/badge/heck43.github.io-0d0d12?style=for-the-badge&logo=githubpages&logoColor=9ef4ff" /></a>
-<a href="https://t.me/Heck1337"><img src="https://img.shields.io/badge/Telegram-@Heck1337-0d0d12?style=for-the-badge&logo=telegram&logoColor=9ef4ff" /></a>
-<a href="https://steamcommunity.com/id/heck1337/"><img src="https://img.shields.io/badge/Steam-@heck1337-0d0d12?style=for-the-badge&logo=steam&logoColor=9ef4ff" /></a>
-<a href="https://discord.gg/BMTCDDbpFh"><img src="https://img.shields.io/badge/Discord-heck43-0d0d12?style=for-the-badge&logo=discord&logoColor=9ef4ff" /></a>
-<a href="mailto:lolnektyr@gmail.com"><img src="https://img.shields.io/badge/Email-mail-0d0d12?style=for-the-badge&logo=gmail&logoColor=9ef4ff" /></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/about-dark.svg"><img src="assets/about-light.svg" width="100%" alt="Обо мне"></picture>
 
-<br/><br/>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg"><img src="assets/stack-light.svg" width="100%" alt="Стек"></picture>
 
-<img src="assets/bento.svg" width="100%" alt="bento" />
+<a href="https://github.com/Heck43/antigravity-web-studio"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-antigravity-web-studio-dark.svg"><img src="assets/project-antigravity-web-studio-light.svg" width="49%" alt="antigravity-web-studio"></picture></a>&nbsp;<a href="https://github.com/Heck43/cpp-journey"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-cpp-journey-dark.svg"><img src="assets/project-cpp-journey-light.svg" width="49%" alt="cpp-journey"></picture></a>
 
-<br/><br/>
+<a href="https://github.com/Heck43/Chess-isometry-Rework"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-chess-isometry-rework-dark.svg"><img src="assets/project-chess-isometry-rework-light.svg" width="49%" alt="Chess-isometry-Rework"></picture></a>&nbsp;<a href="https://github.com/Heck43/aim_trainer_for_heck43"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-aim-trainer-for-heck43-dark.svg"><img src="assets/project-aim-trainer-for-heck43-light.svg" width="49%" alt="aim_trainer_for_heck43"></picture></a>
 
-<p><a href="https://github.com/Heck43/pawgram"><img src="assets/proj0.svg" width="49%" alt="pawgram" /></a> <a href="https://github.com/Heck43/Pawgram-Android"><img src="assets/proj1.svg" width="49%" alt="Pawgram-Android" /></a><br/><a href="https://github.com/Heck43/furry-quest"><img src="assets/proj2.svg" width="49%" alt="furry-quest" /></a> <a href="https://github.com/Heck43/mcp-arma3"><img src="assets/proj3.svg" width="49%" alt="mcp-arma3" /></a><br/><a href="https://github.com/Heck43/plushlair-mobile"><img src="assets/proj4.svg" width="49%" alt="plushlair-mobile" /></a> <a href="https://github.com/Heck43/Chess-isometry-Rework"><img src="assets/proj5.svg" width="49%" alt="Chess-isometry-Rework" /></a></p>
+<a href="https://github.com/Heck43/Bouncing-Balls-Widget"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-bouncing-balls-widget-dark.svg"><img src="assets/project-bouncing-balls-widget-light.svg" width="49%" alt="Bouncing-Balls-Widget"></picture></a>&nbsp;<a href="https://github.com/Heck43/kjughegwoih"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-kjughegwoih-dark.svg"><img src="assets/project-kjughegwoih-light.svg" width="49%" alt="kjughegwoih"></picture></a>
 
-<br/>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg"><img src="assets/stats-light.svg" width="100%" alt="Активность на GitHub"></picture>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake.svg" />
-  <img alt="contributions" src="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake-dark.svg" width="100%" />
-</picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/streak-dark.svg"><img src="assets/streak-light.svg" width="100%" alt="Стрик"></picture>
+
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/wave-dark.svg"><img src="assets/wave-light.svg" width="100%" alt=""></picture>
+
+<a href="https://heck43.github.io"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/button-1-dark.svg"><img src="assets/button-1-light.svg" width="auto" alt="heck43.github.io"></picture></a>&nbsp;&nbsp;<a href="https://github.com/Heck43?tab=repositories"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/button-2-dark.svg"><img src="assets/button-2-light.svg" width="auto" alt="Все репозитории"></picture></a>
+
+<a href="https://metawka.github.io/expressive-profile/?from=Heck43"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/credit-dark.svg"><img src="assets/credit-light.svg" width="auto" alt="Made with Expressive Profile"></picture></a>
 
 </div>

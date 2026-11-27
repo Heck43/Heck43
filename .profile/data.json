@@ -1,0 +1,451 @@
+{
+ "key": "7751fc0f",
+ "stars": 2,
+ "contributions": 137,
+ "repos": 27,
+ "followers": 1,
+ "languages": [
+  [
+   "C++",
+   30117443
+  ],
+  [
+   "Python",
+   1462912
+  ],
+  [
+   "JavaScript",
+   1089508
+  ],
+  [
+   "CSS",
+   320217
+  ],
+  [
+   "Objective-C++",
+   251495
+  ],
+  [
+   "HTML",
+   210859
+  ],
+  [
+   "CMake",
+   174901
+  ]
+ ],
+ "days": [
+  [
+   {
+    "c": 0,
+    "day": 8,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 9,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 10,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 11,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 12,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 13,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 14,
+    "today": false
+   }
+  ],
+  [
+   {
+    "c": 0,
+    "day": 15,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 16,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 17,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 18,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 19,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 20,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 21,
+    "today": false
+   }
+  ],
+  [
+   {
+    "c": 0,
+    "day": 22,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 23,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 24,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 25,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 26,
+    "today": false
+   },
+   {
+    "c": 0,
+    "day": 27,
+    "today": true
+   },
+   null
+  ]
+ ],
+ "streak": {
+  "current": 0,
+  "longest": 3
+ },
+ "pins": [
+  {
+   "name": "antigravity-web-studio",
+   "url": "https://github.com/Heck43/antigravity-web-studio",
+   "text": "Autonomous multi-app web development studio and knowledge base for AI coding agents.",
+   "fork": false,
+   "stars": 0,
+   "language": "JavaScript",
+   "topics": []
+  },
+  {
+   "name": "cpp-journey",
+   "url": "https://github.com/Heck43/cpp-journey",
+   "text": "my c++ homework sorted by date",
+   "fork": false,
+   "stars": 0,
+   "language": "C++",
+   "topics": []
+  },
+  {
+   "name": "Chess-isometry-Rework",
+   "url": "https://github.com/Heck43/Chess-isometry-Rework",
+   "text": "переделка /улучшение игры моего друга",
+   "fork": false,
+   "stars": 1,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "aim_trainer_for_heck43",
+   "url": "https://github.com/Heck43/aim_trainer_for_heck43",
+   "text": "",
+   "fork": false,
+   "stars": 1,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "Bouncing-Balls-Widget",
+   "url": "https://github.com/Heck43/Bouncing-Balls-Widget",
+   "text": "Интерактивный виджет с прыгающими шариками для вашего рабочего стола. Создавайте, настраивайте и играйте с виртуальными шариками, которые подчиняются законам физики. Полностью сделана на python",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "kjughegwoih",
+   "url": "https://github.com/Heck43/kjughegwoih",
+   "text": "Виджет управления музыкой",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  }
+ ],
+ "all": [
+  {
+   "name": "Chess-isometry-Rework",
+   "url": "https://github.com/Heck43/Chess-isometry-Rework",
+   "text": "переделка /улучшение игры моего друга",
+   "fork": false,
+   "stars": 1,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "aim_trainer_for_heck43",
+   "url": "https://github.com/Heck43/aim_trainer_for_heck43",
+   "text": "",
+   "fork": false,
+   "stars": 1,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "Heck43.github.io",
+   "url": "https://github.com/Heck43/Heck43.github.io",
+   "text": "Personal portfolio & website :3",
+   "fork": false,
+   "stars": 0,
+   "language": "HTML",
+   "topics": []
+  },
+  {
+   "name": "LibraryDapperHomework",
+   "url": "https://github.com/Heck43/LibraryDapperHomework",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "C#",
+   "topics": []
+  },
+  {
+   "name": "FitnessEf",
+   "url": "https://github.com/Heck43/FitnessEf",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "C#",
+   "topics": []
+  },
+  {
+   "name": "FitnessApp",
+   "url": "https://github.com/Heck43/FitnessApp",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "C#",
+   "topics": []
+  },
+  {
+   "name": "CinemaAdoNet",
+   "url": "https://github.com/Heck43/CinemaAdoNet",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "C#",
+   "topics": []
+  },
+  {
+   "name": "Pawgram-Android",
+   "url": "https://github.com/Heck43/Pawgram-Android",
+   "text": "Open-source third-party Telegram client with not many but useful modifications.",
+   "fork": true,
+   "stars": 0,
+   "language": "Java",
+   "topics": []
+  },
+  {
+   "name": "ADO.net",
+   "url": "https://github.com/Heck43/ADO.net",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "C#",
+   "topics": []
+  },
+  {
+   "name": "antigravity-web-studio",
+   "url": "https://github.com/Heck43/antigravity-web-studio",
+   "text": "Autonomous multi-app web development studio and knowledge base for AI coding agents.",
+   "fork": false,
+   "stars": 0,
+   "language": "JavaScript",
+   "topics": []
+  },
+  {
+   "name": "mcp-arma3",
+   "url": "https://github.com/Heck43/mcp-arma3",
+   "text": "mcp сервер для ии, я хз зачем, но вроде такого нету, но это легко сделать :3",
+   "fork": false,
+   "stars": 0,
+   "language": null,
+   "topics": []
+  },
+  {
+   "name": "pawgram",
+   "url": "https://github.com/Heck43/pawgram",
+   "text": "Custom Telegram Desktop client with custom mods, clean URLs, and unlimited stickers",
+   "fork": false,
+   "stars": 0,
+   "language": "C++",
+   "topics": []
+  },
+  {
+   "name": "-bjkhklf",
+   "url": "https://github.com/Heck43/-bjkhklf",
+   "text": "Discord Clone Exam Project",
+   "fork": false,
+   "stars": 0,
+   "language": "JavaScript",
+   "topics": []
+  },
+  {
+   "name": "dfgjfgj",
+   "url": "https://github.com/Heck43/dfgjfgj",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": null,
+   "topics": []
+  },
+  {
+   "name": "furry-quest",
+   "url": "https://github.com/Heck43/furry-quest",
+   "text": "Furry Quest action roguelike",
+   "fork": false,
+   "stars": 0,
+   "language": "JavaScript",
+   "topics": []
+  },
+  {
+   "name": "plushlair-mobile",
+   "url": "https://github.com/Heck43/plushlair-mobile",
+   "text": "Plushlair plush store mobile app",
+   "fork": false,
+   "stars": 0,
+   "language": "JavaScript",
+   "topics": []
+  },
+  {
+   "name": "cpp-journey",
+   "url": "https://github.com/Heck43/cpp-journey",
+   "text": "my c++ homework sorted by date",
+   "fork": false,
+   "stars": 0,
+   "language": "C++",
+   "topics": []
+  },
+  {
+   "name": "smartdelivery-docs",
+   "url": "https://github.com/Heck43/smartdelivery-docs",
+   "text": "???????????? API SmartDelivery",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "kinorf_booking",
+   "url": "https://github.com/Heck43/kinorf_booking",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "bookstore",
+   "url": "https://github.com/Heck43/bookstore",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "JavaScript",
+   "topics": []
+  },
+  {
+   "name": "roblox_minesweeper",
+   "url": "https://github.com/Heck43/roblox_minesweeper",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "Luau",
+   "topics": []
+  },
+  {
+   "name": "kjughegwoih",
+   "url": "https://github.com/Heck43/kjughegwoih",
+   "text": "Виджет управления музыкой",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "Hangman",
+   "url": "https://github.com/Heck43/Hangman",
+   "text": "Простая игра \"Виселица\" на Python с графическим интерфейсом.",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "3D-cube-for-Turtle",
+   "url": "https://github.com/Heck43/3D-cube-for-Turtle",
+   "text": "Простой куб, сделан на Turtle. вилизирует  3D графику",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "Bouncing-Balls-Widget",
+   "url": "https://github.com/Heck43/Bouncing-Balls-Widget",
+   "text": "Интерактивный виджет с прыгающими шариками для вашего рабочего стола. Создавайте, настраивайте и играйте с виртуальными шариками, которые подчиняются законам физики. Полностью сделана на python",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "Heck43",
+   "url": "https://github.com/Heck43/Heck43",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  },
+  {
+   "name": "tip_project",
+   "url": "https://github.com/Heck43/tip_project",
+   "text": "",
+   "fork": false,
+   "stars": 0,
+   "language": "Python",
+   "topics": []
+  }
+ ]
+}
