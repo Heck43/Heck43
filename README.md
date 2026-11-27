@@ -1,33 +1,33 @@
-<a href="https://heck43.github.io"><img align="right" src="https://heck43.github.io/media/top-avatar.png" width="112" alt="heck43" /></a>
+<div align="center">
 
-<h3>heck43 <img src="https://heck43.github.io/media/boykisser-dance.gif" width="24" alt=":3" /></h3>
+<img src="assets/hero.svg" width="100%" alt="heck43" />
 
-18 лет · Top Academy (3 курс) · Кострома · делаю моды под Telegram, игры и пет-проекты
+<a href="https://heck43.github.io"><img src="https://img.shields.io/badge/SITE-heck43.github.io-0b0b0c?style=flat-square&labelColor=ff3b30" /></a>
+<a href="https://t.me/Heck1337"><img src="https://img.shields.io/badge/TELEGRAM-@Heck1337-0b0b0c?style=flat-square&labelColor=ff3b30" /></a>
+<a href="https://discord.gg/BMTCDDbpFh"><img src="https://img.shields.io/badge/DISCORD-join-0b0b0c?style=flat-square&labelColor=ff3b30" /></a>
+<a href="mailto:lolnektyr@gmail.com"><img src="https://img.shields.io/badge/MAIL-lolnektyr@gmail.com-0b0b0c?style=flat-square&labelColor=ff3b30" /></a>
 
-[<kbd>&nbsp;heck43.github.io&nbsp;</kbd>](https://heck43.github.io)&nbsp;[<kbd>&nbsp;Telegram&nbsp;</kbd>](https://t.me/Heck1337)&nbsp;[<kbd>&nbsp;Discord&nbsp;</kbd>](https://discord.gg/BMTCDDbpFh)&nbsp;[<kbd>&nbsp;Email&nbsp;</kbd>](mailto:lolnektyr@gmail.com)
+<br/><br/>
 
-<br clear="right" />
+<a href="https://github.com/Heck43/pawgram"><img src="assets/row0.svg" width="100%" alt="pawgram"/></a>
+<br/>
+<a href="https://github.com/Heck43/Pawgram-Android"><img src="assets/row1.svg" width="100%" alt="Pawgram-Android"/></a>
+<br/>
+<a href="https://github.com/Heck43/furry-quest"><img src="assets/row2.svg" width="100%" alt="furry-quest"/></a>
+<br/>
+<a href="https://github.com/Heck43/mcp-arma3"><img src="assets/row3.svg" width="100%" alt="mcp-arma3"/></a>
+<br/>
+<a href="https://github.com/Heck43/plushlair-mobile"><img src="assets/row4.svg" width="100%" alt="plushlair-mobile"/></a>
+<br/>
+<a href="https://github.com/Heck43/Chess-isometry-Rework"><img src="assets/row5.svg" width="100%" alt="Chess-isometry-Rework"/></a>
+<br/>
 
-### Проекты
-
-<p><a href="https://github.com/Heck43/pawgram"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/dark/pawgram.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/light/pawgram.svg" /><img width="49%" alt="pawgram" src="./assets/dark/pawgram.svg" /></picture></a> <a href="https://github.com/Heck43/Pawgram-Android"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/dark/Pawgram-Android.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/light/Pawgram-Android.svg" /><img width="49%" alt="Pawgram-Android" src="./assets/dark/Pawgram-Android.svg" /></picture></a><br /><a href="https://github.com/Heck43/furry-quest"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/dark/furry-quest.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/light/furry-quest.svg" /><img width="49%" alt="furry-quest" src="./assets/dark/furry-quest.svg" /></picture></a> <a href="https://github.com/Heck43/mcp-arma3"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/dark/mcp-arma3.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/light/mcp-arma3.svg" /><img width="49%" alt="mcp-arma3" src="./assets/dark/mcp-arma3.svg" /></picture></a><br /><a href="https://github.com/Heck43/plushlair-mobile"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/dark/plushlair-mobile.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/light/plushlair-mobile.svg" /><img width="49%" alt="plushlair-mobile" src="./assets/dark/plushlair-mobile.svg" /></picture></a> <a href="https://github.com/Heck43/Chess-isometry-Rework"><picture><source media="(prefers-color-scheme: dark)" srcset="./assets/dark/Chess-isometry-Rework.svg" /><source media="(prefers-color-scheme: light)" srcset="./assets/light/Chess-isometry-Rework.svg" /><img width="49%" alt="Chess-isometry-Rework" src="./assets/dark/Chess-isometry-Rework.svg" /></picture></a></p>
-
-### Стек и игры
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://skillicons.dev/icons?i=py,cs,cpp,js,java,lua,git,vscode,visualstudio&theme=dark" />
-  <source media="(prefers-color-scheme: light)" srcset="https://skillicons.dev/icons?i=py,cs,cpp,js,java,lua,git,vscode,visualstudio&theme=light" />
-  <img alt="Stack" src="https://skillicons.dev/icons?i=py,cs,cpp,js,java,lua,git,vscode,visualstudio&theme=dark" height="40" />
-</picture>
-
-<br />
-
-**Играю в** &nbsp; <kbd>Minecraft</kbd> <kbd>Postal 2</kbd> <kbd>ATLYSS</kbd> <kbd>Roblox</kbd>
-
-### Активность
+<br/>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Heck43/Heck43/output/pacman-contribution-graph-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Heck43/Heck43/output/pacman-contribution-graph.svg" />
-  <img alt="Pac-Man Contribution Graph" src="https://raw.githubusercontent.com/Heck43/Heck43/output/pacman-contribution-graph-dark.svg" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake.svg" />
+  <img alt="contributions" src="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake-dark.svg" width="100%" />
 </picture>
+
+</div>
