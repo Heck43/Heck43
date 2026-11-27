@@ -105,11 +105,20 @@ if __name__ == "__main__":
         for hp in ("assets/hero-dark.svg", "assets/hero-light.svg"):
             if os.path.exists(hp):
                 hs = open(hp, "r", encoding="utf-8").read()
+                # Remove decorative petal halo before clipPath#ava
+                hs = re.sub(r'<path d="[^"]+" fill="[^"]+" opacity="\.9"/>(?=<clipPath id="ava">)', "", hs)
+                # Replace clipPath#ava with larger clean squircle (232x232, rx=52) & drop surfaceContainer ring
+                hs = re.sub(
+                    r'<clipPath id="ava">.*?</clipPath>(?:<path d="[^"]+" fill="[^"]+"/>)?',
+                    '<clipPath id="ava"><rect x="34" y="34" width="232" height="232" rx="52"/></clipPath>',
+                    hs,
+                    count=1,
+                    flags=re.S,
+                )
                 if "<image " in hs:
-                    hs = re.sub(r'(<image[^>]*\bhref=")[^"]+(")', r'\g<1>' + av_b64 + r'\2', hs, count=1)
-                    open(hp, "w", encoding="utf-8").write(hs)
-                elif '<clipPath id="ava">' in hs and '<g class="up"' in hs:
-                    img_tag = '<g class="fade"><image href="' + av_b64 + '" x="50" y="50" width="200" height="200" clip-path="url(#ava)" preserveAspectRatio="xMidYMid slice"/></g>'
+                    hs = re.sub(r'<image[^>]*clip-path="url\(#ava\)"[^>]*/>', '<image href="' + av_b64 + '" x="34" y="34" width="232" height="232" clip-path="url(#ava)" preserveAspectRatio="xMidYMid slice"/>', hs, count=1)
+                elif '<g class="up"' in hs:
+                    img_tag = '<g class="fade"><image href="' + av_b64 + '" x="34" y="34" width="232" height="232" clip-path="url(#ava)" preserveAspectRatio="xMidYMid slice"/></g>'
                     hs = hs.replace('<g class="up"', img_tag + '<g class="up"', 1)
-                    open(hp, "w", encoding="utf-8").write(hs)
+                open(hp, "w", encoding="utf-8").write(hs)
     print("Injected daily-pic into stack SVGs & ensured avatar")
