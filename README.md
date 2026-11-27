@@ -22,7 +22,4 @@
 
 <a href="https://metawka.github.io/expressive-profile/?from=Heck43"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/credit-dark.svg"><img src="assets/credit-light.svg" width="auto" alt="Made with Expressive Profile"></picture></a>
 
-
-<br/>
-<picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake-dark.svg"><img src="https://raw.githubusercontent.com/Heck43/Heck43/output/github-contribution-grid-snake.svg" width="100%" alt="contributions"></picture>
 </div>
