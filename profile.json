@@ -1,29 +1,30 @@
 {
   "version": 1,
   "login": "Heck43",
-  "seed": "#7C4DFF",
+  "seed": "#2563EB",
   "seedFromAvatar": false,
-  "scheme": "expressive",
+  "scheme": "vibrant",
   "motion": true,
-  "iconFill": false,
+  "iconFill": true,
   "order": [
     "hero",
     "socials",
     "projects",
-    "wave",
     "stack",
-    "about",
     "stats",
-    "streak",
     "buttons"
   ],
-  "hidden": [],
+  "hidden": [
+    "wave",
+    "about",
+    "streak"
+  ],
   "hero": {
-    "greeting": "whoami //",
+    "greeting": "",
     "name": "heck43 :3",
-    "subtitle": "18 y.o. dev · Кострома · Top Academy (3 курс)\nМоды под Telegram, игры, MCP и пет-проекты",
-    "typing": true,
-    "avatarShape": "gem",
+    "subtitle": "18 · Кострома · Top Academy (3 курс) · i5-8300H / GTX 1050\nМоды под Telegram, игры, MCP-сервера и пет-проекты",
+    "typing": false,
+    "avatarShape": "clover",
     "chips": [
       {
         "icon": "brand:python",
@@ -34,8 +35,8 @@
         "label": "C# / C++"
       },
       {
-        "icon": "brand:javascript",
-        "label": "JS & Luau"
+        "icon": "sports_esports",
+        "label": "Games & Mods"
       }
     ]
   },
@@ -54,30 +55,24 @@
         "url": "https://discord.gg/BMTCDDbpFh"
       }
     ],
-    "variant": "chip",
-    "fill": "tonal",
-    "card": true
+    "variant": "icon",
+    "fill": "brand",
+    "shape": "pill",
+    "card": false
   },
   "projects": {
     "source": "manual",
     "repos": [
       "pawgram",
-      "Pawgram-Android",
       "furry-quest",
       "mcp-arma3",
-      "plushlair-mobile",
       "Chess-isometry-Rework"
     ],
     "overrides": {
       "pawgram": {
         "icon": "brand:telegram",
-        "shape": "gem",
-        "text": "Кастомный Telegram Desktop: моды, чистые URL и безлимитные стикеры"
-      },
-      "Pawgram-Android": {
-        "icon": "brand:openjdk",
-        "shape": "soft",
-        "text": "Модифицированный Telegram-клиент под Android"
+        "shape": "clover",
+        "text": "Кастомный Telegram Desktop: моды, чистые URL и стикеры"
       },
       "furry-quest": {
         "icon": "sports_esports",
@@ -86,13 +81,8 @@
       },
       "mcp-arma3": {
         "icon": "terminal",
-        "shape": "clover",
+        "shape": "gem",
         "text": "MCP-сервер для интеграции ИИ с Arma 3"
-      },
-      "plushlair-mobile": {
-        "icon": "deployed_code",
-        "shape": "flower",
-        "text": "Мобильное приложение магазина Plushlair"
       },
       "Chess-isometry-Rework": {
         "icon": "brand:python",
@@ -104,7 +94,7 @@
     "fork": "Fork"
   },
   "stack": {
-    "title": "Стек и инструменты",
+    "title": "Стек",
     "groups": [
       {
         "title": "Языки",
@@ -124,24 +114,19 @@
           {
             "icon": "brand:javascript",
             "label": "JavaScript"
-          }
-        ]
-      },
-      {
-        "title": "Ещё",
-        "items": [
+          },
           {
             "icon": "brand:openjdk",
-            "label": "Java (Android)"
+            "label": "Java"
           },
           {
             "icon": "code",
-            "label": "Luau / Lua"
+            "label": "Luau"
           }
         ]
       },
       {
-        "title": "Workflow",
+        "title": "Инструменты",
         "items": [
           {
             "icon": "brand:git",
@@ -156,41 +141,24 @@
     ]
   },
   "about": {
-    "title": "Досье",
-    "items": [
-      {
-        "icon": "person",
-        "label": "18 лет · Кострома, Россия"
-      },
-      {
-        "icon": "terminal",
-        "label": "Top Academy · 3 курс"
-      },
-      {
-        "icon": "sports_esports",
-        "label": "Minecraft · Postal 2 · ATLYSS · Roblox"
-      },
-      {
-        "icon": "desktop_windows",
-        "label": "i5-8300H · GTX 1050 2GB · 16GB RAM · Win 10 LTSC"
-      }
-    ]
+    "title": "Обо мне",
+    "items": []
   },
   "stats": {
-    "title": "Активность на GitHub",
+    "title": "Активность",
     "stars": "Звёзды",
-    "contributions": "Коммиты за год",
-    "repos": "Репозитории",
+    "contributions": "Коммиты",
+    "repos": "Репо",
     "followers": "Подписчики",
-    "calendar": "Последние 21 день",
+    "calendar": "21 день",
     "weekdays": "ПВСЧПСВ",
-    "languages": "Языки в репозиториях",
-    "showLanguages": true
+    "languages": "Языки",
+    "showLanguages": false
   },
   "streak": {
     "title": "Стрик",
-    "current": "Текущий стрик",
-    "longest": "Рекорд за год",
+    "current": "Текущий",
+    "longest": "Рекорд",
     "days": "дн."
   },
   "buttons": {
