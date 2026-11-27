@@ -10,7 +10,7 @@
 
 <a href="https://github.com/Heck43/Bouncing-Balls-Widget"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-bouncing-balls-widget-dark.svg"><img src="assets/project-bouncing-balls-widget-light.svg" width="49%" alt="Bouncing-Balls-Widget"></picture></a>&nbsp;<a href="https://github.com/Heck43/kjughegwoih"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-kjughegwoih-dark.svg"><img src="assets/project-kjughegwoih-light.svg" width="49%" alt="kjughegwoih"></picture></a>
 
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg"><img src="assets/stack-light.svg" width="100%" alt="Стек и инструменты"></picture>
+<table width="100%"><tr><td width="68%" valign="middle"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg"><img src="assets/stack-light.svg" width="100%" alt="Стек и инструменты"></picture></td><td width="32%" align="center" valign="middle"><img src="assets/daily-pic.png" width="100%" alt="daily pic :3" /></td></tr></table>
 
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/stats-dark.svg"><img src="assets/stats-light.svg" width="100%" alt="Активность на GitHub"></picture>
 
@@ -22,4 +22,6 @@
 
 <a href="https://metawka.github.io/expressive-profile/?from=Heck43"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/credit-dark.svg"><img src="assets/credit-light.svg" width="auto" alt="Made with Expressive Profile"></picture></a>
 
+
+<p align="center"><img src="https://heck43.github.io/media/boykisser-dance.gif" width="36" alt=":3" /><br/><sub>обновляется каждый час · made with :3</sub></p>
 </div>
