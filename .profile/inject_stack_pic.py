@@ -90,4 +90,18 @@ if __name__ == "__main__":
     b64 = "data:image/png;base64," + base64.b64encode(raw).decode("ascii")
     for p in ("assets/stack-dark.svg", "assets/stack-light.svg"):
         inject_into_svg(p, b64)
-    print("Injected daily-pic into stack SVGs")
+    if os.path.exists(".profile/avatar.png"):
+        av_b64 = "data:image/png;base64," + base64.b64encode(open(".profile/avatar.png", "rb").read()).decode("ascii")
+        for hp in ("assets/hero-dark.svg", "assets/hero-light.svg"):
+            if os.path.exists(hp):
+                hs = open(hp, "r", encoding="utf-8").read()
+                if "<image " not in hs and '<clipPath id="ava">' in hs:
+                    hs = re.sub(
+                        r'(<clipPath id="ava">.*?</clipPath>)',
+                        r'\1<image href="' + av_b64 + r'" x="52" y="52" width="196" height="196" clip-path="url(#ava)" preserveAspectRatio="xMidYMid slice"/>',
+                        hs,
+                        count=1,
+                        flags=re.S,
+                    )
+                    open(hp, "w", encoding="utf-8").write(hs)
+    print("Injected daily-pic into stack SVGs & ensured avatar")
