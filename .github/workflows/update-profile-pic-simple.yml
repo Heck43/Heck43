@@ -20,40 +20,12 @@ jobs:
       - name: Install Pillow
         run: pip install pillow
 
-      - name: Fetch random image and round corners
-        run: |
-          python3 - <<'EOF'
-          import os, random, re, urllib.request
-          from PIL import Image, ImageDraw
-
-          page = urllib.request.urlopen("https://ibb.co/album/6R58df").read().decode("utf-8", "ignore")
-          imgs = sorted(set(re.findall(r'https://i\.ibb\.co/[^"]+\.(?:webp|png|jpg|gif)', page)))
-          assert imgs, "No images found in ImgBB album"
-          url = random.choice(imgs)
-          print("Selected:", url)
-
-          urllib.request.urlretrieve(url, "raw_pic")
-          im = Image.open("raw_pic").convert("RGBA")
-          # Square crop centered + resize to 500x500
-          m = min(im.size)
-          left = (im.width - m) // 2
-          top = (im.height - m) // 2
-          im = im.crop((left, top, left + m, top + m)).resize((500, 500), Image.Resampling.LANCZOS)
-
-          # Rounded corners mask (material-style radius 64)
-          mask = Image.new("L", (500, 500), 0)
-          draw = ImageDraw.Draw(mask)
-          draw.rounded_rectangle((0, 0, 499, 499), radius=64, fill=255)
-          im.putalpha(mask)
-
-          os.makedirs("assets", exist_ok=True)
-          im.save("assets/daily-pic.png", "PNG", optimize=True)
-          os.remove("raw_pic")
-          EOF
+      - name: Fetch random image and embed inside Stack SVGs
+        run: python3 .profile/inject_stack_pic.py --fetch
 
       - name: Commit and Push
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add assets/daily-pic.png
-          git diff --staged --quiet || (git commit -m "🎨 Обновлена картинка профиля" && git push)
+          git add assets/daily-pic.png assets/stack-dark.svg assets/stack-light.svg
+          git diff --staged --quiet || (git commit -m "🎨 Обновлена картинка в стеке" && git push)
