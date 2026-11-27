@@ -55,10 +55,9 @@
         "url": "https://discord.gg/BMTCDDbpFh"
       }
     ],
-    "variant": "icon",
-    "fill": "brand",
-    "shape": "pill",
-    "card": false
+    "variant": "chip",
+    "fill": "filled",
+    "card": true
   },
   "projects": {
     "source": "manual",
