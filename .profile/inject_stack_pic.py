@@ -95,13 +95,8 @@ if __name__ == "__main__":
         for hp in ("assets/hero-dark.svg", "assets/hero-light.svg"):
             if os.path.exists(hp):
                 hs = open(hp, "r", encoding="utf-8").read()
-                if "<image " not in hs and '<clipPath id="ava">' in hs:
-                    hs = re.sub(
-                        r'(<clipPath id="ava">.*?</clipPath>)',
-                        r'\1<image href="' + av_b64 + r'" x="52" y="52" width="196" height="196" clip-path="url(#ava)" preserveAspectRatio="xMidYMid slice"/>',
-                        hs,
-                        count=1,
-                        flags=re.S,
-                    )
+                if "<image " not in hs and '<clipPath id="ava">' in hs and '<g class="up"' in hs:
+                    img_tag = '<g class="fade"><image href="' + av_b64 + '" x="50" y="50" width="200" height="200" clip-path="url(#ava)" preserveAspectRatio="xMidYMid slice"/></g>'
+                    hs = hs.replace('<g class="up"', img_tag + '<g class="up"', 1)
                     open(hp, "w", encoding="utf-8").write(hs)
     print("Injected daily-pic into stack SVGs & ensured avatar")
