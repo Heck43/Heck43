@@ -1,4 +1,5 @@
 import base64
+import io
 import os
 import random
 import re
@@ -97,7 +98,10 @@ if __name__ == "__main__":
         if os.path.exists(".profile/avatar.png"):
             av_bytes = open(".profile/avatar.png", "rb").read()
     if av_bytes:
-        av_b64 = "data:image/png;base64," + base64.b64encode(av_bytes).decode("ascii")
+        av_im = Image.open(io.BytesIO(av_bytes)).convert("RGBA").resize((240, 240), Image.Resampling.LANCZOS)
+        buf = io.BytesIO()
+        av_im.save(buf, "PNG", optimize=True)
+        av_b64 = "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
         for hp in ("assets/hero-dark.svg", "assets/hero-light.svg"):
             if os.path.exists(hp):
                 hs = open(hp, "r", encoding="utf-8").read()
