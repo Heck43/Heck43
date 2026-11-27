@@ -1,5 +1,4 @@
 import base64
-import io
 import os
 import random
 import re
@@ -8,16 +7,42 @@ from PIL import Image
 
 PIC_PATH = "assets/daily-pic.png"
 ALBUM_URL = "https://ibb.co/album/6R58df"
+FALLBACK_URL = "https://avatars.githubusercontent.com/u/126146783?v=4"
 MARKER = 'id="daily-pic-embed"'
+UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
+
+
+def download_bytes(url):
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=15) as r:
+        return r.read()
 
 
 def fetch_daily_pic():
-    page = urllib.request.urlopen(ALBUM_URL, timeout=15).read().decode("utf-8", "ignore")
-    imgs = sorted(set(re.findall(r'https://i\.ibb\.co/[^"]+\.(?:webp|png|jpg|gif)', page)))
-    if not imgs:
-        raise RuntimeError("No images found in ImgBB album")
-    url = random.choice(imgs)
-    urllib.request.urlretrieve(url, "raw_pic")
+    raw_bytes = None
+    try:
+        page = download_bytes(ALBUM_URL).decode("utf-8", "ignore")
+        imgs = list(set(re.findall(r'https://i\.ibb\.co/[^"]+\.(?:webp|png|jpg|gif)', page)))
+        random.shuffle(imgs)
+        for url in imgs[:5]:
+            try:
+                raw_bytes = download_bytes(url)
+                print("Selected:", url)
+                break
+            except Exception as e:
+                print("Skip", url, e)
+    except Exception as e:
+        print("Album fetch failed:", e)
+
+    if raw_bytes is None:
+        if os.path.exists(PIC_PATH):
+            print("Keeping existing daily-pic.png")
+            return
+        print("Using GitHub avatar fallback")
+        raw_bytes = download_bytes(FALLBACK_URL)
+
+    with open("raw_pic", "wb") as f:
+        f.write(raw_bytes)
     im = Image.open("raw_pic").convert("RGBA")
     m = min(im.size)
     left = (im.width - m) // 2
@@ -32,7 +57,6 @@ def inject_into_svg(svg_path, b64_uri):
     if not os.path.exists(svg_path):
         return
     s = open(svg_path, "r", encoding="utf-8").read()
-    # Remove previous injection if present
     s = re.sub(r'<g id="daily-pic-embed">.*?</g>', "", s, flags=re.S)
 
     m = re.search(r'viewBox="0 0 (\d+(?:\.\d+)?) (\d+(?:\.\d+)?)"', s)
@@ -41,13 +65,11 @@ def inject_into_svg(svg_path, b64_uri):
     W = float(m.group(1))
     H = float(m.group(2))
 
-    # Place rounded photo on the right side of the Stack card
     size = min(244.0, H - 56.0)
     x = W - 28.0 - size
     y = (H - size) / 2.0
     r = 26.0
 
-    # Unique clip id per file
     cid = "dpClip_" + ("d" if "dark" in svg_path else "l")
     block = (
         f'<g {MARKER}>'
