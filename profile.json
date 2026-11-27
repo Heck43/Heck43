@@ -8,13 +8,13 @@
   "iconFill": false,
   "order": [
     "hero",
+    "socials",
     "projects",
     "wave",
     "stack",
     "about",
     "stats",
     "streak",
-    "socials",
     "buttons"
   ],
   "hidden": [],
@@ -34,10 +34,29 @@
         "label": "C# / C++"
       },
       {
-        "icon": "brand:lua",
-        "label": "Luau & JS"
+        "icon": "brand:javascript",
+        "label": "JS & Luau"
       }
     ]
+  },
+  "socials": {
+    "items": [
+      {
+        "icon": "brand:telegram",
+        "url": "https://t.me/Heck1337"
+      },
+      {
+        "icon": "brand:steam",
+        "url": "https://steamcommunity.com/id/heck1337/"
+      },
+      {
+        "icon": "brand:discord",
+        "url": "https://discord.gg/BMTCDDbpFh"
+      }
+    ],
+    "variant": "chip",
+    "fill": "tonal",
+    "card": true
   },
   "projects": {
     "source": "manual",
@@ -51,12 +70,12 @@
     ],
     "overrides": {
       "pawgram": {
-        "icon": "send",
+        "icon": "brand:telegram",
         "shape": "gem",
         "text": "Кастомный Telegram Desktop: моды, чистые URL и безлимитные стикеры"
       },
       "Pawgram-Android": {
-        "icon": "smartphone",
+        "icon": "brand:openjdk",
         "shape": "soft",
         "text": "Модифицированный Telegram-клиент под Android"
       },
@@ -66,17 +85,17 @@
         "text": "Экшен-рогалик на JavaScript"
       },
       "mcp-arma3": {
-        "icon": "memory",
+        "icon": "terminal",
         "shape": "clover",
         "text": "MCP-сервер для интеграции ИИ с Arma 3"
       },
       "plushlair-mobile": {
-        "icon": "shopping_bag",
+        "icon": "deployed_code",
         "shape": "flower",
         "text": "Мобильное приложение магазина Plushlair"
       },
       "Chess-isometry-Rework": {
-        "icon": "extension",
+        "icon": "brand:python",
         "shape": "pill",
         "text": "Переделка и улучшение изометрических шахмат"
       }
@@ -95,29 +114,29 @@
             "label": "Python"
           },
           {
+            "icon": "brand:dotnet",
+            "label": "C# / .NET"
+          },
+          {
             "icon": "brand:cplusplus",
-            "label": "C++ / C#"
+            "label": "C++"
           },
           {
             "icon": "brand:javascript",
             "label": "JavaScript"
-          },
-          {
-            "icon": "brand:lua",
-            "label": "Luau / Lua"
           }
         ]
       },
       {
-        "title": "Платформы",
+        "title": "Ещё",
         "items": [
           {
-            "icon": "brand:android",
-            "label": "Android (Java)"
+            "icon": "brand:openjdk",
+            "label": "Java (Android)"
           },
           {
-            "icon": "brand:roblox",
-            "label": "Roblox"
+            "icon": "code",
+            "label": "Luau / Lua"
           }
         ]
       },
@@ -144,7 +163,7 @@
         "label": "18 лет · Кострома, Россия"
       },
       {
-        "icon": "school",
+        "icon": "terminal",
         "label": "Top Academy · 3 курс"
       },
       {
@@ -174,28 +193,8 @@
     "longest": "Рекорд за год",
     "days": "дн."
   },
-  "socials": {
-    "items": [
-      {
-        "icon": "brand:telegram",
-        "url": "https://t.me/Heck1337"
-      },
-      {
-        "icon": "brand:steam",
-        "url": "https://steamcommunity.com/id/heck1337/"
-      },
-      {
-        "icon": "brand:discord",
-        "url": "https://discord.gg/BMTCDDbpFh"
-      }
-    ],
-    "variant": "icon",
-    "fill": "filled",
-    "shape": "flower",
-    "card": false
-  },
   "buttons": {
-    "card": true,
+    "card": false,
     "items": [
       {
         "icon": "language",
