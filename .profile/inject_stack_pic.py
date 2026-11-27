@@ -67,7 +67,7 @@ def inject_into_svg(svg_path, b64_uri):
     H = float(m.group(2))
 
     size = min(332.0, H - 96.0)
-    x = W - 48.0 - size
+    x = W - 32.0 - size
     y = (H - size) / 2.0
     r = 26.0
 
