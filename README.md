@@ -22,4 +22,6 @@
 
 <a href="https://metawka.github.io/expressive-profile/?from=Heck43"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/credit-dark.svg"><img src="assets/credit-light.svg" width="auto" alt="Made with Expressive Profile"></picture></a>
 
+
+<p align="center"><img src="https://heck43.github.io/media/boykisser-dance.gif" width="110" alt=":3" /></p>
 </div>
